@@ -1,5 +1,5 @@
 site_name: Python SDK
-site_url: https://refuel.ai
+site_url: https://refuel.ai/python-sdk
 repo_url: https://github.com/refuel-ai/refuel-docs
 repo_name: refuel-ai/refuel-docs
 
@@ -17,6 +17,7 @@ theme:
     - navigation.sections
     - navigation.top
     - toc.follow
+    - toc.integrate
     - search.suggest
     - search.highlight
     - content.tabs.link

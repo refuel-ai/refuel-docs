@@ -1,5 +1,4 @@
-<img src="/assets/Autolabel_blk.png#only-light" alt="isolated" width="100%"/>
-<img src="/assets/Autolabel_wt.png#only-dark" alt="isolated" width="100%"/>
+# Refuel SDK Guide
 
 **Refuel SDK** is a Python library to label, clean and enrich datasets with Large Language Models (LLMs).
 
@@ -62,12 +61,12 @@ refuel_client = refuel.init(**options)
 
 Here’s the complete list of initialization options currently supported:
 
-| Option        | Is Required | Default Value | Comments |
-| :----------   | :-----------| :-------------| :------- |
-| `api_key`     | Yes         | -             | Used to authenticate all requests to the API server |
-| `project`     | No          | None          | The name or ID of the project you plan to use. SDK functions that require project will default to this value if not provided elsewhere |
-| `timeout`     | No          | 60            | Timeout in seconds |
-| `max_workers` | No          | Num CPUs (os.cpu_count()) | Max number of concurrent requests to the API server |
+| Option           | Is Required | Default Value | Comments |
+| :-------------   | :-----------| :-------------| :------- |
+| `api_key`        | Yes         | -             | Used to authenticate all requests to the API server |
+| `project`        | No          | None          | The name or ID of the project you plan to use. SDK functions that require project will default to this value if not provided elsewhere |
+| `timeout`        | No          | 60            | Timeout in seconds |
+| `max_workers`    | No          | Num CPUs (os.cpu_count()) | Max number of concurrent requests to the API server |
 
 ## Projects
 
@@ -138,7 +137,7 @@ dataset = refuel_client.upload_dataset(
 Some details about the function parameters:
 
 | Option        | Is Required | Default Value | Comments |
-| :----------   | :-----------| :----------| :------- |
+| :-----------------   | :-----------| :----------| :------- |
 | `file_path`   | Yes         | -          | Path to the data you wish to upload |
 | `dataset_name`| Yes         | -          | Unique name of the dataset being uploaded |
 | `embedding_columns` | No    | Empty List | Column(s) that will be used as inputs when computing embedding representation for this row |
@@ -177,7 +176,7 @@ This function will return a pandas dataframe.
 Some details about the function parameters: 
 
 | Option       | Is Required | Default Value | Comments |
-| :----------  | :-----------| :-------------| :------- |
+| :------------  | :-----------| :-------------| :------- |
 | `dataset`    | Yes         | -            | Name of the dataset you want to query and retrieve items (rows) from |
 | `max_items`  | No          | 100          | Max number of rows you want to fetch |
 | `offset`     | No          | 0            | If this is set to a positive number, say N, then the first N rows will be skipped and the API will return “max_items” number of rows after skipping the first N rows. |
@@ -214,7 +213,7 @@ items = refuel_client.get_items(
 Some details about sorting related function parameters:
 
 | Option       | Is Required | Default Value           | Comments |
-| :----------  | :-----------| :-----------------------| :------- |
+| :---------------  | :-----------| :-----------------------| :------- |
 | `order_by`   | No          | Refuel’s default sort (by diversity) | Name of the dataset you want to query and retrieve items (rows) from |
 | `order_direction` | No     | 100          | Valid values: ASC or DESC |
 
