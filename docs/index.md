@@ -14,7 +14,7 @@ hide:
 
     Change the colors, fonts, language, icons, logo and more with a few lines
 
-    [:octicons-arrow-right-24: Docs](https://docs.refuel.ai/python-sdk)
+    [:octicons-arrow-right-24: Docs](python-sdk.md)
 
 -   :material-scale-balance:{ .lg .middle } __Autolabel__
 
@@ -22,7 +22,7 @@ hide:
 
     Label, clean and enrich text datasets with LLMs.
 
+    [:octicons-arrow-right-24: Docs](autolabel/index.md)
     [:octicons-arrow-right-24: Github](https://github.com/refuel-ai/autolabel)
-    [:octicons-arrow-right-24: Docs](https://docs.refuel.ai/autolabel)
 
 </div>

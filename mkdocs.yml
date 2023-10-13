@@ -6,6 +6,39 @@ repo_name: refuel-ai/refuel-docs
 nav:
   - Landing Page: index.md
   - SDK Guide: python-sdk.md
+  - Autolabel:
+      - Introduction: autolabel/index.md
+      - Getting Started: autolabel/guide/overview/getting-started.md
+      - Tutorial - Toxic comment classification: guide/overview/tutorial-classification.md
+      - Models:
+          - LLMs: autolabel/guide/llms/llms.md
+          - Embedding Models: autolabel/guide/llms/embeddings.md
+          - Benchmarks: autolabel/guide/llms/benchmarks.md
+      - Labeling Tasks:
+          - Classification Task: autolabel/guide/tasks/classification_task.md
+          - Multilabel Classification Task: autolabel/guide/tasks/multilabel_classification_task.md
+          - Entity Matching Task: autolabel/guide/tasks/entity_matching_task.md
+          - Named Entity Recognition Task: autolabel/guide/tasks/named_entity_recognition_task.md
+          - Question Answering Task: autolabel/guide/tasks/question_answering_task.md
+      - Transformations:
+          - Introduction: autolabel/guide/transforms/introduction.md
+          - Webpage Transform: autolabel/guide/transforms/webpage_transform.md
+          - PDF Transform: autolabel/guide/transforms/pdf_transform.md
+          - Image Transform: autolabel/guide/transforms/image_transform.md
+      - Improving Labeling Accuracy:
+          - Prompting Better: autolabel/guide/accuracy/prompting-better.md
+          - Few-shot Prompting: autolabel/guide/accuracy/few-shot.md
+          - Confidence: autolabel/guide/accuracy/confidence.md
+          - Chain of Thought: autolabel/guide/accuracy/chain-of-thought.md
+      - Reliability and Robustness:
+          - LLM Output Caching: autolabel/guide/reliability/llm-output-caching.md
+          - State Management: autolabel/guide/reliability/state-management.md
+      - Working with Autolabel:
+          - Configs: autolabel/guide/resources/configs.md
+          - AutolabelDataset: autolabel/guide/resources/autolabel_dataset.md
+          - CLI: autolabel/guide/resources/CLI.md
+          - Refuel-provided Datasets: autolabel/guide/resources/refuel_datasets.md
+          - Synthetic Dataset Generation: autolabel/guide/resources/synthetic_dataset_generation.md
 
 theme:
   name: material
