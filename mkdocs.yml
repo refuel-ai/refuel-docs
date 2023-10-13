@@ -4,8 +4,8 @@ repo_url: https://github.com/refuel-ai/refuel-docs
 repo_name: refuel-ai/refuel-docs
 
 nav:
-  - Landing Page: index.md
-  - SDK Guide: python-sdk.md
+  - Welcome: index.md
+  - Cloud SDK: python-sdk.md
   - Autolabel:
       - Introduction: autolabel/index.md
       - Getting Started: autolabel/guide/overview/getting-started.md
