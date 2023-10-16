@@ -10,11 +10,11 @@ Since we'll be using OpenAI along with Autolabel, we can install all necessary l
 pip install 'refuel-autolabel[openai]'
 ```
 
-Now, we can set our OpenAI key as an environment variable to get started. You can always use an LLM of your choice - see more optioons and installation instructions [here](/guide/llms/llms). 
+Now, we can set our OpenAI key as an environment variable to get started. You can always use an LLM of your choice - see more optioons and installation instructions [here](../llms/llms.md). 
 
 ## Download and review dataset
 
-We'll be using a dataset called [Civil Comments](https://huggingface.co/datasets/civil_comments), which is [available through Autolabel](/guide/resources/refuel_datasets). You can download it locally, by simply running:
+We'll be using a dataset called [Civil Comments](https://huggingface.co/datasets/civil_comments), which is [available through Autolabel](../resources/refuel_datasets.md). You can download it locally, by simply running:
 ```python
 from autolabel import get_data
 
@@ -119,7 +119,7 @@ ds = agent.run(ds, max_items=100)
 
 ### Experiment #2: Few-shot prompting to provide helpful examples
 
-Similar to how human labelers find it helpful to use relevant examples when making a decision, LLM performance for labeling also goes up when choosing helpful examples in the prompt. For this next experiment, we will pick a few helpful examples from `seed.csv`. More information on few-shot prompting can be found [here](/guide/accuracy/few-shot).
+Similar to how human labelers find it helpful to use relevant examples when making a decision, LLM performance for labeling also goes up when choosing helpful examples in the prompt. For this next experiment, we will pick a few helpful examples from `seed.csv`. More information on few-shot prompting can be found [here](../accuracy/few-shot.md).
 
 We take the previous config, and just update the following fields:
 ```python
@@ -215,7 +215,7 @@ Nice! We improved performance from 54% to 68% by providing a few examples to the
 
 ### Experiment #3: Improving task guidelines after reviewing errors (prompt engineering)
 
-Typically, you can improve the accuracy by reviewing mistakes and updating the task guidelines (see another example [here](/guide/accuracy/prompting-better)). You can review some of the mistakes from the previous run by looking at the output Pandas DataFrame produced called `df`:
+Typically, you can improve the accuracy by reviewing mistakes and updating the task guidelines (see another example [here](../accuracy/prompting-better.md)). You can review some of the mistakes from the previous run by looking at the output Pandas DataFrame produced called `df`:
 ```python
 df[df['label'] != df['ToxicCommentClassification_llm_label']].head(10)
 ```

@@ -251,6 +251,6 @@ For this run on the civil comments dataset, label diversity at random achieved 8
 
 Label diversity example selection strategies are likely best suited for labeling tasks with a small number of unique labels, which is the case for the civil comments dataset with only 2 labels. This is because equal representation of all the possible labels may be less likely to bias the LLM towards a particular label.
 
-By default, Autolabel uses OpenAI to compute text embeddings for few shot example selection strategies that require them (semantic similarity, max marginal relevance). However, Autolabel also supports alternative embedding model providers such as Google Vertex AI and Huggingface as outlined [here](/guide/llms/embeddings).
+By default, Autolabel uses OpenAI to compute text embeddings for few shot example selection strategies that require them (semantic similarity, max marginal relevance). However, Autolabel also supports alternative embedding model providers such as Google Vertex AI and Huggingface as outlined [here](../llms/embeddings.md).
 
 It is almost always advisable to use an example selection strategy over a zero-shot approach in your autolabeling workflows, but the choice of which example selection strategy to use is dependent upon the specific labeling task and dataset.
