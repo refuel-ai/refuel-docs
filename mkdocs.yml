@@ -39,6 +39,15 @@ nav:
           - CLI: autolabel/guide/resources/CLI.md
           - Refuel-provided Datasets: autolabel/guide/resources/refuel_datasets.md
           - Synthetic Dataset Generation: autolabel/guide/resources/synthetic_dataset_generation.md
+      - Reference:
+          - AutoLabeler: autolabel/reference/labeler.md
+          - Config: autolabel/reference/configs.md
+          - Models: autolabel/reference/models.md
+          - Tasks: autolabel/reference/tasks.md
+          - Schema: autolabel/reference/schema.md
+          - Cache: autolabel/reference/cache.md
+          - Example Selector: autolabel/reference/example_select.md
+          - Data Models: autolabel/reference/data_models.md
 
 theme:
   name: material
@@ -50,7 +59,6 @@ theme:
     - navigation.sections
     - navigation.top
     - toc.follow
-    - toc.integrate
     - search.suggest
     - search.highlight
     - content.tabs.link
@@ -70,7 +78,10 @@ theme:
       primary: indigo
 
 plugins:
-  - mkdocstrings
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [autolabel] # search packages in the autolabel folder
   - search
   - mkdocs-jupyter
   - table-reader

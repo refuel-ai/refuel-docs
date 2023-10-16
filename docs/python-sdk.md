@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+---
+
+
 # Refuel SDK Guide
 
 **Refuel SDK** is a Python library to label, clean and enrich datasets with Large Language Models (LLMs).
