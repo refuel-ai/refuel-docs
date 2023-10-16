@@ -20,6 +20,7 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
+      - run: git submodule update --init --recursive
       - run: pip install git+https://${{secrets.MKDOCS_TOKEN}}@github.com/squidfunk/mkdocs-material-insiders.git@9.4.2-insiders-4.42.0
       - run: pip install mkdocstrings mkdocstrings-python mkdocs-jupyter mkdocs-table-reader-plugin
       - run: mkdocs gh-deploy --force
