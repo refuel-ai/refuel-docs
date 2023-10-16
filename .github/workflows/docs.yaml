@@ -1,0 +1,25 @@
+name: docs
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - uses: actions/cache@v2
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+      - run: pip install git+https://${{secrets.MKDOCS_TOKEN}}@github.com/squidfunk/mkdocs-material-insiders.git@9.4.2-insiders-4.42.0
+      - run: pip install mkdocstrings mkdocstrings-python mkdocs-jupyter mkdocs-table-reader-plugin
+      - run: mkdocs gh-deploy --force
