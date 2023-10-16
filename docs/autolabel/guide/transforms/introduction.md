@@ -56,7 +56,7 @@ ds = agent.run(ds)
 Simply run the labeling job on the transformed dataset. This will extract the state of the national park from each webpage.
 
 <figure markdown>
-  ![Transformation Labeling Run](/assets/transform_output.png){ width="600" }
+  ![Transformation Labeling Run](/refuel-docs/assets/transform_output.png){ width="600" }
   <figcaption>Output of the transformation labeling run</figcaption>
 </figure>
 
