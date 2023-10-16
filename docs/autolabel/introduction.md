@@ -1,5 +1,5 @@
-<img src="/assets/Autolabel_blk.png#only-light" alt="isolated" width="100%"/>
-<img src="/assets/Autolabel_wt.png#only-dark" alt="isolated" width="100%"/>
+<img src="/refuel-docs/assets/Autolabel_blk.png#only-light" alt="isolated" width="100%"/>
+<img src="/refuel-docs/assets/Autolabel_wt.png#only-dark" alt="isolated" width="100%"/>
 
 **Autolabel** is a Python library to label, clean and enrich datasets with Large Language Models (LLMs).
 
