@@ -1,5 +1,5 @@
 <figure markdown>
-  ![Chain-of-Thought prompting](/assets/standardvscotprompt.png){ width="600" }
+  ![Chain-of-Thought prompting](../../../assets/standardvscotprompt.png){ width="600" }
   <figcaption>Chain of Thought Prompting (Wei et al)</figcaption>
 </figure>
 
@@ -49,7 +49,7 @@ config = {
 }
 ```
 
-Notice the changes that we have made to the config compared to the config without Chain-of-Thought [here](/guide/tasks/question_answering_task):
+Notice the changes that we have made to the config compared to the config without Chain-of-Thought [here](../tasks/question_answering_task.md):
 
 - `chain_of_thought` flag - this tells labeling agent to expect an explanation for the answer, in the seed dataset as well as LLM generated responses.
 - `explanation_column` - this is the column where the explanation for the seed examples will reside.

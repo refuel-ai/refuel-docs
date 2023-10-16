@@ -20,7 +20,7 @@ Separate from the Autolabel library, you'll also need to install an integration 
 export OPENAI_API_KEY="<your-openai-key>"
 ```
 
-To use a different LLM provider, follow the documentation [here](/guide/llms/llms).
+To use a different LLM provider, follow the documentation [here](../llms/llms.md).
 
 ## Goal: Sentiment Analysis on a Movie Review Dataset
 
@@ -174,4 +174,4 @@ agent.run(test_dataset)
 
 In this simple walkthrough, we have installed `autolabel`, gone over an example dataset to label (sentiment analysis for moview reviews) and used `autolabel` to label this dataset in just a few minutes.
 
-We hope that this gives you a glimpse of what you can do with Refuel. There are many other [labeling tasks](/guide/tasks/tasks) available within Autolabel, and if you have any questions, join our community <a href="https://discord.gg/uEdr8nrMGm" target="_blank">here</a> or [open an issue](https://github.com/refuel-ai/autolabel/issues/new/choose) on [Github](https://github.com/refuel-ai/autolabel).
+We hope that this gives you a glimpse of what you can do with Refuel. There are many other [labeling tasks](../tasks/classification_task.md) available within Autolabel, and if you have any questions, join our community <a href="https://discord.gg/uEdr8nrMGm" target="_blank">here</a> or [open an issue](https://github.com/refuel-ai/autolabel/issues/new/choose) on [Github](https://github.com/refuel-ai/autolabel).

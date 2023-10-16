@@ -1,5 +1,5 @@
 site_name: Refuel Docs
-site_url: https://refuel-ai.github.io/refuel-docs
+site_url: https://refuel.ai
 repo_url: https://github.com/refuel-ai/refuel-docs
 repo_name: refuel-ai/refuel-docs
 
@@ -7,9 +7,9 @@ nav:
   - Welcome: index.md
   - Cloud SDK: python-sdk.md
   - Autolabel:
-      - Introduction: autolabel/index.md
+      - Introduction: autolabel/introduction.md
       - Getting Started: autolabel/guide/overview/getting-started.md
-      - Tutorial - Toxic comment classification: guide/overview/tutorial-classification.md
+      - Tutorial - Toxic comment classification: autolabel/guide/overview/tutorial-classification.md
       - Models:
           - LLMs: autolabel/guide/llms/llms.md
           - Embedding Models: autolabel/guide/llms/embeddings.md
