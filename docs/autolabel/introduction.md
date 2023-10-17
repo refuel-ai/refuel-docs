@@ -9,15 +9,15 @@ You can access RefuelLLM, our recently announced LLM purpose built for data labe
 
 <img alt="Refuel Performance" src="/refuel-docs/assets/refuel_llm_performance.png" width="100%">
 
-You can request access to Refuel LLM [here](https://refuel-ai.typeform.com/llm-access). Read the docs about using RefuelLLM in autolabel [here](https://docs.refuel.ai/guide/llms/llms/#refuel).
+You can request access to Refuel LLM [here](https://refuel-ai.typeform.com/llm-access). Read the docs about using RefuelLLM in autolabel [here](https://docs.refuel.ai/autolabel/guide/llms/llms/#refuel).
 
 ## Features
 
-- Autolabel data for [NLP tasks](https://docs.refuel.ai/guide/tasks/classification_task/) such as classification, question-answering and named entity-recognition, entity matching and more.
-- Seamlessly use commercial and open source [LLMs](https://docs.refuel.ai/guide/llms/llms/) from providers such as OpenAI, Anthropic, HuggingFace, Google and more.
+- Autolabel data for [NLP tasks](https://docs.refuel.ai/autolabel/guide/tasks/classification_task/) such as classification, question-answering and named entity-recognition, entity matching and more.
+- Seamlessly use commercial and open source [LLMs](https://docs.refuel.ai/autolabel/guide/llms/llms/) from providers such as OpenAI, Anthropic, HuggingFace, Google and more.
 - Leverage research-proven LLM techniques to boost label quality, such as few-shot learning and chain-of-thought prompting.
-- [Confidence estimation](https://docs.refuel.ai/guide/accuracy/confidence/) and explanations out of the box for every single output label
-- [Caching and state management](https://docs.refuel.ai/guide/reliability/state-management/) to minimize costs and experimentation time
+- [Confidence estimation](https://docs.refuel.ai/autolabel/guide/accuracy/confidence/) and explanations out of the box for every single output label
+- [Caching and state management](https://docs.refuel.ai/autolabel/guide/reliability/state-management/) to minimize costs and experimentation time
 
 ## Getting Started
 
@@ -25,7 +25,7 @@ You can get started with Autolabel by simpling bringing the dataset you want to 
 
 - [Installation and your first labeling task](guide/overview/getting-started.md): Steps to install Autolabel and run sentiment analysis for movie reviews using OpenAI's `gpt-3.5-turbo`.
 - [Classification tutorial](guide/overview/tutorial-classification.md): A deeper dive into how Autolabel can be used to detect toxic comments at 95%+ accuracy.
-- [Command Line Interface](https://docs.refuel.ai/guide/resources/CLI): Learn how to use Autolabel's CLI to intuitively create configs from the command line.
+- [Command Line Interface](https://docs.refuel.ai/autolabel/guide/resources/CLI): Learn how to use Autolabel's CLI to intuitively create configs from the command line.
 - [Here](https://github.com/refuel-ai/autolabel/tree/main/examples) are more examples with sample notebooks that show how Autolabel can be used for different NLP tasks.
 
 ## Resources

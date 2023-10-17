@@ -20,6 +20,7 @@ nav:
           - Entity Matching Task: autolabel/guide/tasks/entity_matching_task.md
           - Named Entity Recognition Task: autolabel/guide/tasks/named_entity_recognition_task.md
           - Question Answering Task: autolabel/guide/tasks/question_answering_task.md
+          - Attribute Extraction: autolabel/guide/tasks/question_answering_task.md
       - Transformations:
           - Introduction: autolabel/guide/transforms/introduction.md
           - Webpage Transform: autolabel/guide/transforms/webpage_transform.md
