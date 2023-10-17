@@ -1,5 +1,5 @@
-<img src="/refuel-docs/assets/Autolabel_blk.png#only-light" alt="isolated" width="100%"/>
-<img src="/refuel-docs/assets/Autolabel_wt.png#only-dark" alt="isolated" width="100%"/>
+<img src="/assets/Autolabel_blk.png#only-light" alt="isolated" width="100%"/>
+<img src="/assets/Autolabel_wt.png#only-dark" alt="isolated" width="100%"/>
 
 **Autolabel** is a Python library to label, clean and enrich datasets with Large Language Models (LLMs).
 
@@ -7,7 +7,7 @@
 
 You can access RefuelLLM, our recently announced LLM purpose built for data labeling, through Autolabel (Read more about it in this [blog post](http://www.refuel.ai/blog-posts/announcing-refuel-llm)). Refuel LLM is a Llama-v2-13b base model, instruction tuned on over 2500 unique (5.24B tokens) labeling tasks spanning categories such as classification, entity resolution, matching, reading comprehension and information extraction. You can experiment with the model in the playground [here](https://app.refuel.ai/playground).
 
-<img alt="Refuel Performance" src="/refuel-docs/assets/refuel_llm_performance.png" width="100%">
+<img alt="Refuel Performance" src="/assets/refuel_llm_performance.png" width="100%">
 
 You can request access to Refuel LLM [here](https://refuel-ai.typeform.com/llm-access). Read the docs about using RefuelLLM in autolabel [here](https://docs.refuel.ai/autolabel/guide/llms/llms/#refuel).
 

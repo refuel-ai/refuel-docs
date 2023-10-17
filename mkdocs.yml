@@ -1,5 +1,5 @@
 site_name: Refuel Docs
-site_url: https://refuel-ai.github.io/refuel-docs
+site_url: https://refuel.ai
 repo_url: https://github.com/refuel-ai/refuel-docs
 repo_name: refuel-ai/refuel-docs
 
@@ -20,7 +20,7 @@ nav:
           - Entity Matching Task: autolabel/guide/tasks/entity_matching_task.md
           - Named Entity Recognition Task: autolabel/guide/tasks/named_entity_recognition_task.md
           - Question Answering Task: autolabel/guide/tasks/question_answering_task.md
-          - Attribute Extraction: autolabel/guide/tasks/question_answering_task.md
+          - Attribute Extraction: autolabel/guide/tasks/attribute_extraction.md
       - Transformations:
           - Introduction: autolabel/guide/transforms/introduction.md
           - Webpage Transform: autolabel/guide/transforms/webpage_transform.md
