@@ -372,7 +372,11 @@ import refuel
 
 refuel_client = refuel.init()
 
-labels = refuel_client.label(application='<APPLICATION NAME>', inputs=['<INPUT 1>', '<INPUT 2>'])
+labels = refuel_client.label(application='<APPLICATION NAME>', inputs=[{'<INPUT 1>': '<VALUE FOR INPUT 1>', '<INPUT 2>': '<VALUE FOR INPUT 2>'}])
 ```
 
-Each input is a dictionary with keys corresponding to the input columns defined in the task. For example, if the task has two input columns, “name” and “description”, then each input will be a dictionary with two keys, “name” and “description”. The values for these keys will be the name and description values for that input. It is recommended to use smaller batches for inputs (10-100). For larger datasets, we recommend using batch-mode: uploading a dataset and triggering a labeling run.
+Each input is a dictionary with keys corresponding to the input columns defined in the task. For example, if the task has two input columns, “name” and “description”, then each input will be a dictionary with two keys, “name” and “description”. 
+
+Example inputs: [{"name": "example name value", "description": "example description value"}]
+
+The values for these keys will be the name and description values for that input. It is recommended to use smaller batches for inputs (<= 10). For larger datasets, we recommend using batch-mode: uploading a dataset and triggering a labeling run.
