@@ -6,16 +6,15 @@ hide:
 
 # Refuel SDK Guide
 
-**Refuel SDK** is a Python library to label, clean and enrich datasets with Large Language Models (LLMs).
+**Refuel SDK** is a Python library to programmatically call Refuel's APIs. This guide describes how to install and use the Refuel SDK.
 
-This guide describes how to install and use the Refuel SDK. The SDK is currently an alpha release and under rapid development. Please expect some sharp edges. Feedback and bug reports are always welcome! Shoot us an email at support@refuel.ai or ping us on our shared Slack.
+The SDK is currently an beta release and under rapid development. Please expect some sharp edges. Feedback and bug reports are always welcome! Shoot us an email at `support@refuel.ai` or ping us on our shared Slack.
 
-## Installation
+## Getting Started
 
-To get started you need to do two things:
+### Installation
 
-1. Get the API key from Refuel (shared during onboarding)
-2. Install the SDK using a package installer such as pip:
+Install the SDK using a package installer such as pip:
 
 ```bash
 pip install refuel
@@ -23,11 +22,9 @@ pip install refuel
 
 Installing and using the SDK requires Python 3.6+.
 
-## Initialization
+### Initializing a client session
 
-### Setting an Environment variable
-
-Set the environment variable REFUEL_API_KEY within the context of your ML application. The SDK will read it during initialization, and use this value when sending log events to the Refuel platform:
+Set the environment variable REFUEL_API_KEY. The SDK will read it during initialization, and use this value when sending requests:
 
 ```python
 import refuel
@@ -38,21 +35,7 @@ import refuel
 refuel_client = refuel.init()
 ```
 
-### Passing it to the init function
-
-```python
-import refuel
-
-options = {
-    "api_key": "<YOUR_API_KEY>"
-}
-
-refuel_client = refuel.init(**options)
-```
-
-### Setting a project, and other optional parameters during initialization
-
-In the cloud application, there is a top-level dropdown to select the project you’re working on currently. And this selection powers all the pages downstream (datasets, labeling tasks etc). The SDK allows you to do this by setting the project during initialization:
+Alternatively, you can supply the API key as a parameter during initializtion as shared below. In the cloud application, there is a top-level dropdown to select the project you’re working on currently. And this selection powers all the pages downstream (datasets, labeling tasks etc). The SDK allows you to do this by setting the project during initialization as well:
 
 ```python
 import refuel
@@ -65,14 +48,6 @@ options = {
 refuel_client = refuel.init(**options)
 ```
 
-Here’s the complete list of initialization options currently supported:
-
-| Option           | Is Required | Default Value | Comments |
-| :-------------   | :-----------| :-------------| :------- |
-| `api_key`        | Yes         | -             | Used to authenticate all requests to the API server |
-| `project`        | No          | None          | The name or ID of the project you plan to use. SDK functions that require project will default to this value if not provided elsewhere |
-| `timeout`        | No          | 60            | Timeout in seconds |
-| `max_workers`    | No          | Num CPUs (os.cpu_count()) | Max number of concurrent requests to the API server |
 
 ## Projects
 
@@ -80,13 +55,9 @@ These functions let you create a new project in your team’s Refuel account, or
 
 ### Get Projects
 
-The get_projects API will return a list of all projects that belong to your team: 
+The get_projects API will return a list of all projects that belong to your team:
 
 ```python
-import refuel
-
-refuel_client = refuel.init()
-
 projects = refuel_client.get_projects()
 ```
 
@@ -111,18 +82,20 @@ These functions let you upload/download a full dataset, or fetch rows and LLM la
 
 ### Get all current datasets
 
-The get_datasets function will return a list of all datasets that belong to your team
+The get_datasets function will return a list of all datasets in the project:
 
 ```python
 import refuel
 
-refuel_client = refuel.init()
+options = {
+    "api_key": "<YOUR API KEY>",
+    "project": "<PROJECT NAME>",
+}
+
+refuel_client = refuel.init(**options)
 
 datasets = refuel_client.get_datasets()
 ```
-
-- If no project was set during the SDK client initialization, this will return all datasets that belong to your team across projects
-- If a project was set during the SDK client initialization, this will return only returning datasets within the given project.
 
 ### Upload Dataset
 
@@ -131,7 +104,12 @@ This function lets you upload a local CSV file as a new dataset to Refuel.
 ```python
 import refuel
 
-refuel_client = refuel.init()
+options = {
+    "api_key": "<YOUR API KEY>",
+    "project": "<PROJECT NAME>",
+}
+
+refuel_client = refuel.init(**options)
 
 dataset = refuel_client.upload_dataset(
   file_path='<PATH TO CSV FILE>',
@@ -150,7 +128,7 @@ Some details about the function parameters:
 
 ### Download Dataset
 
-This function create a snapshot of your dataset and generate presigned URL for secure download. 
+This function create a snapshot of your dataset and generate presigned URL for secure download.
 
 ```python
 response = refuel_client.download_dataset(
@@ -168,7 +146,12 @@ In addition to downloading the entire dataset, you can also fetch a list of item
 ```python
 import refuel
 
-refuel_client = refuel.init()
+options = {
+    "api_key": "<YOUR API KEY>",
+    "project": "<PROJECT NAME>",
+}
+
+refuel_client = refuel.init(**options)
 
 items = refuel_client.get_items(
   dataset='<DATASET NAME>',
@@ -177,9 +160,7 @@ items = refuel_client.get_items(
 )
 ```
 
-This function will return a pandas dataframe. 
-
-Some details about the function parameters: 
+This function will return a pandas dataframe. Some details about the function parameters: 
 
 | Option       | Is Required | Default Value | Comments |
 | :------------  | :-----------| :-------------| :------- |
@@ -187,15 +168,11 @@ Some details about the function parameters:
 | `max_items`  | No          | 100          | Max number of rows you want to fetch |
 | `offset`     | No          | 0            | If this is set to a positive number, say N, then the first N rows will be skipped and the API will return “max_items” number of rows after skipping the first N rows. |
 
-### Querying items, along with labels from a labeling task
+#### Querying items, along with labels from a labeling task
 
 get_items() also allows you to provide an optional parameter - a labeling task. When provided, the function will also include the task results (LLM labels, confidence and manually confirmed labels, if any) for the returned items.
 
 ```python
-import refuel
-
-refuel_client = refuel.init()
-
 items = refuel_client.get_items(
   dataset='<DATASET NAME>',
   task='<LABELING TASK NAME>',
@@ -203,7 +180,7 @@ items = refuel_client.get_items(
 )
 ```
 
-### Applying sort ordering when querying items
+#### Applying sort ordering when querying items
 
 By default, the API will use Refuel’s sort order (by decreasing order of diversity). But you can specify any other column in the dataset that you would lille to sort by, when querying for items in the dataset: 
 
@@ -223,7 +200,7 @@ Some details about sorting related function parameters:
 | `order_by`   | No          | Refuel’s default sort (by diversity) | Name of the dataset you want to query and retrieve items (rows) from |
 | `order_direction` | No     | 100          | Valid values: ASC or DESC |
 
-### Applying filters when querying items
+#### Applying filters when querying items
 
 In addition to sorting options, you can also define filters to only fetch items in the dataset that match a certain criteria. A filter such as “column = value” is defined as a Python dictionary with three keys:
 
@@ -234,11 +211,6 @@ In addition to sorting options, you can also define filters to only fetch items 
 Here’s an example of how to define and use filters in the SDK:
 
 ```python
-import refuel
-
-refuel_client = refuel.init()
-
-
 items_filter = {
   'field': 'transaction_category',
   'operator': '=',
@@ -280,19 +252,14 @@ You can retrieve a list of all tasks within a given project as follows
 ```python
 import refuel
 
-refuel_client = refuel.init()
+options = {
+    "api_key": "<YOUR API KEY>",
+    "project": "<PROJECT NAME>",
+}
+
+refuel_client = refuel.init(**options)
 
 tasks = refuel_client.get_tasks()
-```
-
-If you haven’t specified a project during client initialization, you can explicitly pass it as a parameter to this function:
-
-```python
-import refuel
-
-refuel_client = refuel.init()
-
-tasks = refuel_client.get_tasks(project='<PROJECT NAME>')
 ```
 
 ### Start a Labeling Task Run
@@ -314,10 +281,6 @@ This will kick off a bulk labeling run for the specified task and dataset, and l
 You can also cancel an ongoing labelling task with the same function as follows.
 
 ```python
-import refuel
-
-refuel_client = refuel.init()
-
 response = refuel_client.cancel_task_run(
   task='<TASK NAME>',
   dataset='<DATASET NAME>'
@@ -329,15 +292,15 @@ response = refuel_client.cancel_task_run(
 To check on the status of an ongoing labeling task run, you can use the following function
 
 ```python
-import refuel
-
-refuel_client = refuel.init()
-
 task_run = refuel_client.get_task_run(
   task='<TASK NAME>',
   dataset='<DATASET NAME>'
 )
 ```
+
+## Applications
+
+Refuel allows you to deploy a labeling task as an application. Applications allow you to label data synchronously on demand, primarily for online workloads.
 
 ### Deploy labeling application
 
@@ -346,7 +309,12 @@ To deploy an existing task as a labeling application, you can use the following 
 ```python
 import refuel
 
-refuel_client = refuel.init()
+options = {
+    "api_key": "<YOUR API KEY>",
+    "project": "<PROJECT NAME>",
+}
+
+refuel_client = refuel.init(**options)
 
 response = refuel_client.deploy_task(task='<TASK NAME>')
 ```
@@ -356,27 +324,23 @@ response = refuel_client.deploy_task(task='<TASK NAME>')
 To get all labeling applications that are currently deployed, use the following function
 
 ```python
-import refuel
-
-refuel_client = refuel.init()
-
 applications = refuel_client.get_applications()
 ```
 
 ### Label using a deployed application
 
-You can then get labels from your deployed application: 
+You can then get labels from your deployed application:
 
 ```python
-import refuel
+inputs = [
+  {'<COL 1>': '<VALUE FOR COL 1>', '<COL 2>': '<VALUE FOR COL 2>' ... }
+]
 
-refuel_client = refuel.init()
-
-labels = refuel_client.label(application='<APPLICATION NAME>', inputs=[{'<INPUT 1>': '<VALUE FOR INPUT 1>', '<INPUT 2>': '<VALUE FOR INPUT 2>'}])
+labels = refuel_client.label(application='<APPLICATION NAME>', inputs=inputs)
 ```
 
-Each input is a dictionary with keys corresponding to the input columns defined in the task. For example, if the task has two input columns, “name” and “description”, then each input will be a dictionary with two keys, “name” and “description”. The values for these keys will be the name and description values for that input.
+Each element in input is a dictionary with keys corresponding to the input columns defined in the task. For example, if the task has two input columns, “name” and “description”, then each entry will be a dictionary with two keys, “name” and “description”. The values for these keys will be the name and description values for that input. E.g.:
 
-Example inputs: [{"name": "example name value", "description": "example description value"}]
+`[{"name": "example name value", "description": "example description value"}]`
 
 It is recommended to use smaller batches for inputs (<= 10). For larger datasets, we recommend using batch-mode: uploading a dataset and triggering a labeling run.

@@ -12,7 +12,7 @@ hide:
 
     ---
 
-    Python library for labeling data at any scale with Refuel Cloud
+    Python library for interacting with Refuel's cloud APIs.
 
     [:octicons-arrow-right-24: Docs](python-sdk.md)
 
