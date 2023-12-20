@@ -131,7 +131,7 @@ This function lets you upload a local CSV file as a new dataset to Refuel.
 ```python
 import refuel
 
-refuel_client =refuel.init()
+refuel_client = refuel.init()
 
 dataset = refuel_client.upload_dataset(
   file_path='<PATH TO CSV FILE>',
@@ -168,7 +168,7 @@ In addition to downloading the entire dataset, you can also fetch a list of item
 ```python
 import refuel
 
-refuel_client =refuel.init()
+refuel_client = refuel.init()
 
 items = refuel_client.get_items(
   dataset='<DATASET NAME>',
@@ -194,7 +194,7 @@ get_items() also allows you to provide an optional parameter - a labeling task. 
 ```python
 import refuel
 
-refuel_client =refuel.init()
+refuel_client = refuel.init()
 
 items = refuel_client.get_items(
   dataset='<DATASET NAME>',
@@ -236,7 +236,7 @@ Here’s an example of how to define and use filters in the SDK:
 ```python
 import refuel
 
-refuel_client =refuel.init()
+refuel_client = refuel.init()
 
 
 items_filter = {
@@ -280,7 +280,7 @@ You can retrieve a list of all tasks within a given project as follows
 ```python
 import refuel
 
-refuel_client =refuel.init()
+refuel_client = refuel.init()
 
 tasks = refuel_client.get_tasks()
 ```
@@ -290,7 +290,7 @@ If you haven’t specified a project during client initialization, you can expli
 ```python
 import refuel
 
-refuel_client =refuel.init()
+refuel_client = refuel.init()
 
 tasks = refuel_client.get_tasks(project='<PROJECT NAME>')
 ```
@@ -331,10 +331,52 @@ To check on the status of an ongoing labeling task run, you can use the followin
 ```python
 import refuel
 
-refuel_client =refuel.init()
+refuel_client = refuel.init()
 
 task_run = refuel_client.get_task_run(
   task='<TASK NAME>',
   dataset='<DATASET NAME>'
 )
 ```
+
+### Deploy labeling application
+
+To deploy an existing task as a labeling application, you can use the following function
+
+```python
+import refuel
+
+refuel_client = refuel.init()
+
+response = refuel_client.deploy_task(task='<TASK NAME>')
+```
+
+### Get all labeling application
+
+To get all labeling applications that are currently deployed, use the following function
+
+```python
+import refuel
+
+refuel_client = refuel.init()
+
+applications = refuel_client.get_applications()
+```
+
+### Label using a deployed application
+
+You can then get labels from your deployed application: 
+
+```python
+import refuel
+
+refuel_client = refuel.init()
+
+labels = refuel_client.label(application='<APPLICATION NAME>', inputs=[{'<INPUT 1>': '<VALUE FOR INPUT 1>', '<INPUT 2>': '<VALUE FOR INPUT 2>'}])
+```
+
+Each input is a dictionary with keys corresponding to the input columns defined in the task. For example, if the task has two input columns, “name” and “description”, then each input will be a dictionary with two keys, “name” and “description”. The values for these keys will be the name and description values for that input.
+
+Example inputs: [{"name": "example name value", "description": "example description value"}]
+
+It is recommended to use smaller batches for inputs (<= 10). For larger datasets, we recommend using batch-mode: uploading a dataset and triggering a labeling run.
