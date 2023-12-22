@@ -49,7 +49,9 @@ nav:
           - Cache: autolabel/reference/cache.md
           - Example Selector: autolabel/reference/example_select.md
           - Data Models: autolabel/reference/data_models.md
-
+  - Integrations:
+      - Introduction: integrations/introduction.md
+      - AWS: integrations/aws.md
 theme:
   name: material
   favicon: assets/favicon.ico
