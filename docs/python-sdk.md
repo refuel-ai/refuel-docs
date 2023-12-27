@@ -245,9 +245,9 @@ Here’s the complete list of filter operators that are currently supported
 
 These functions let you retrieve information about labeling tasks defined within a project, and start and cancel a task run.
 
-### Get Tasks
+### Define a new Task
 
-You can retrieve a list of all tasks within a given project as follows
+You can create a new task programmatically within a given project as follows:
 
 ```python
 import refuel
@@ -258,6 +258,26 @@ options = {
 }
 
 refuel_client = refuel.init(**options)
+
+refuel_client.create_task(
+    task='<TASK NAME>',
+    task_type='<TASK TYPE>',
+    dataset='<DATASET NAME>',
+    input_columns=['col 1', 'col 2' ...],
+    context = '...',
+    fields = [{'name': '...', 'guidelines': ...}]
+)
+```
+
+- task_type is one of: `classification`, `multilabel_classification` or `attribute_extraction`
+- input_columns is the subset of columns from the dataset that will be used as input for LLM
+- fields is a list of dictionaries. Each dictionary contains a fixed set of keys: name (name of the LLM label field as it will be appear in the exported dataset), guidelines (labeling guidelines for the LLM) and labels (list of valid labels, this field is only required for classification type tasks)
+
+### Get Tasks
+
+You can retrieve a list of all tasks within a given project as follows
+
+```python
 
 tasks = refuel_client.get_tasks()
 ```
@@ -329,18 +349,59 @@ applications = refuel_client.get_applications()
 
 ### Label using a deployed application
 
-You can then get labels from your deployed application:
+You can use the deployed application for online predictions as follows:
 
 ```python
 inputs = [
-  {'<COL 1>': '<VALUE FOR COL 1>', '<COL 2>': '<VALUE FOR COL 2>' ... }
+  {'col_1': 'value_1', 'col_2': 'value_2' ...},
+  {'col_1': 'value_1', 'col_2': 'value_2' ...},
 ]
 
-labels = refuel_client.label(application='<APPLICATION NAME>', inputs=inputs)
+response = refuel_client.label(application='<APPLICATION NAME>', inputs=inputs)
 ```
 
-Each element in input is a dictionary with keys corresponding to the input columns defined in the task. For example, if the task has two input columns, “name” and “description”, then each entry will be a dictionary with two keys, “name” and “description”. The values for these keys will be the name and description values for that input. E.g.:
+Each element in `inputs` is a dictionary, with keys as names of the input columns defined in the task. For example, let's consider an application for sentiment classification called `my_sentiment_classifier`, with two input fields - `source` and `text`. You can use it as follows:
 
-`[{"name": "example name value", "description": "example description value"}]`
+```python
+inputs = [
+  {'source': 'yelp.com', 'text': 'I really liked the pizza at this restaurant.'}
+]
 
-It is recommended to use smaller batches for inputs (<= 10). For larger datasets, we recommend using batch-mode: uploading a dataset and triggering a labeling run.
+response = refuel_client.label(application='my_sentiment_classifier', inputs=inputs)
+```
+
+`response` has the following schema:
+
+- `refuel_output[i]` contains the output for `inputs[i]`
+- `refuel_fields` is a list whose length is equal to the number of fields defined in the application. For example, let's say `my_sentiment_classifier` has just one field, `sentiment`. In this case the output will be:
+
+```
+{
+  'application_id': '...',
+  'application_name': 'my_sentiment_classifier',
+  'refuel_output': [
+    {'refuel_uuid': '...',
+     'refuel_api_timestamp': '...',
+     'refuel_fields': 
+        {
+          'sentiment': {
+            'label': 'positive,
+            'confidence': 0.9758
+          }
+        }
+    }]
+}
+```
+
+
+### Share feedback for application outputs
+
+The SDK allows users to log feedback for online predictions. When logging predictions, it is important to identify the input request for which you're logging feedback using `refuel_uuid` from the response above:
+
+```python
+
+label = {'sentiment': 'negative'}
+refuel_client.feedback(application='my_sentiment_classifier', refuel_uuid='...', label=label)
+```
+
+Any row with logged feedback will appear with the verified check mark ("✓") in the cloud application.
