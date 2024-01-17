@@ -182,23 +182,23 @@ items = refuel_client.get_items(
 
 #### Applying sort ordering when querying items
 
-By default, the API will use Refuel’s sort order (by decreasing order of diversity). But you can specify any other column in the dataset that you would lille to sort by, when querying for items in the dataset: 
+By default, the API will use Refuel’s sort order (by decreasing order of diversity). But you can specify any other column(s) in the dataset that you would like to sort by, when querying for items in the dataset with the order_by param: 
 
 ```python
 items = refuel_client.get_items(
   dataset='<DATASET NAME>',
   max_items=100,
-  order_by='<COLUMN NAME TO SORT BY>',
-  order_direction='ASC'
+  order_by=[{'field': '<COLUMN NAME TO SORT BY>', 'direction': '<ASC or DESC>', 'subtask': '<SUBTASK NAME>'}],
 )
 ```
 
-Some details about sorting related function parameters:
+You may have multiple dicts in the `order_by` list if you would like to sort by multiple columns (used in the case of ties). Some details about the keys for each dict in the `order_by` list:
 
-| Option       | Is Required | Default Value           | Comments |
-| :---------------  | :-----------| :-----------------------| :------- |
-| `order_by`   | No          | Refuel’s default sort (by diversity) | Name of the dataset you want to query and retrieve items (rows) from |
-| `order_direction` | No     | 100          | Valid values: ASC or DESC |
+| Key       | Is Required | Default Value           | Description | Comments |
+| :---------------  | :-----------| :-----------------------|:-----------------------| :------- |
+| `field`   | Yes          |  | The name of the column in the dataset to sort by | In addition to the columns in the dataset, the field can also be 'label' or 'confidence', if the task and subtask names are specified. |
+| `direction`   | No          | `ASC` | The direction that you would like to sort the specified column by | Should be `ASC` or `DESC` |
+| `subtask`   | No          | null | The name of the subtask for which you would like to sort by label or confidence | This should only be provided if the field is 'label' or 'confidence' and requires a task name to be specified in the function params. |
 
 #### Applying filters when querying items
 
