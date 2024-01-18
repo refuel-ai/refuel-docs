@@ -182,13 +182,26 @@ items = refuel_client.get_items(
 
 #### Applying sort ordering when querying items
 
-By default, the API will use Refuel’s sort order (by decreasing order of diversity). But you can specify any other column(s) in the dataset that you would like to sort by, when querying for items in the dataset with the order_by param: 
+By default, the API will use Refuel’s sort order (by decreasing order of diversity). You can use the `order_by` param to sort by any other columns in the dataset or by the label or confidence score from a labeling task.
+
+1) Sort by dataset column
 
 ```python
 items = refuel_client.get_items(
   dataset='<DATASET NAME>',
   max_items=100,
-  order_by=[{'field': '<COLUMN NAME TO SORT BY>', 'direction': '<ASC or DESC>', 'subtask': '<SUBTASK NAME>'}],
+  order_by=[{'field': '<COLUMN NAME TO SORT BY>', 'direction': '<ASC or DESC>'}],
+)
+```
+
+2) Sort by label or confidence score from a labeling task. Note that this requires a task name and a subtask name to be specified.
+
+```python
+items = refuel_client.get_items(
+  dataset='<DATASET NAME>',
+  task='<LABELING TASK NAME>',
+  max_items=100,
+  order_by=[{'field': '<label or confidence>', 'direction': 'ASC', 'subtask': '<SUBTASK NAME>'}],
 )
 ```
 
