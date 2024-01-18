@@ -194,14 +194,14 @@ items = refuel_client.get_items(
 )
 ```
 
-2) Sort by label or confidence score from a labeling task. Note that this requires a task name and a subtask name to be specified.
+2) Sort by label or confidence score from a labeling task. Note that this requires a task name and a subtask name to be specified. `field` can be either 'label' or 'confidence'.
 
 ```python
 items = refuel_client.get_items(
   dataset='<DATASET NAME>',
   task='<LABELING TASK NAME>',
   max_items=100,
-  order_by=[{'field': '<label or confidence>', 'direction': 'ASC', 'subtask': '<SUBTASK NAME>'}],
+  order_by=[{'field': 'confidence', 'direction': '<ASC or DESC>', 'subtask': '<SUBTASK NAME>'}],
 )
 ```
 
