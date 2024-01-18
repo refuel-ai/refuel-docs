@@ -6,6 +6,9 @@ repo_name: refuel-ai/refuel-docs
 nav:
   - Welcome: index.md
   - Cloud SDK: python-sdk.md
+  - Integrations:
+      - Introduction: integrations/introduction.md
+      - AWS: integrations/aws.md
   - Autolabel:
       - Introduction: autolabel/introduction.md
       - Getting Started: autolabel/guide/overview/getting-started.md
@@ -49,9 +52,6 @@ nav:
           - Cache: autolabel/reference/cache.md
           - Example Selector: autolabel/reference/example_select.md
           - Data Models: autolabel/reference/data_models.md
-  - Integrations:
-      - Introduction: integrations/introduction.md
-      - AWS: integrations/aws.md
 theme:
   name: material
   favicon: assets/favicon.ico
