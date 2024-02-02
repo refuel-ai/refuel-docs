@@ -10,7 +10,7 @@ nav:
       - Introduction: integrations/introduction.md
       - AWS: integrations/aws.md
   - autolabel/docs:
-      - Introduction: autolabel/docs/introduction.md
+      - Introduction: autolabel/docs/index.md
       - Getting Started: autolabel/docs/guide/overview/getting-started.md
       - Tutorial - Toxic comment classification: autolabel/docs/guide/overview/tutorial-classification.md
       - Models:
