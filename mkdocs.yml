@@ -9,49 +9,49 @@ nav:
   - Integrations:
       - Introduction: integrations/introduction.md
       - AWS: integrations/aws.md
-  - Autolabel:
-      - Introduction: autolabel/introduction.md
-      - Getting Started: autolabel/guide/overview/getting-started.md
-      - Tutorial - Toxic comment classification: autolabel/guide/overview/tutorial-classification.md
+  - Autolabel Docs:
+      - Introduction: autolabel/docs/index.md
+      - Getting Started: autolabel/docs/guide/overview/getting-started.md
+      - Tutorial - Toxic comment classification: autolabel/docs/guide/overview/tutorial-classification.md
       - Models:
-          - LLMs: autolabel/guide/llms/llms.md
-          - Embedding Models: autolabel/guide/llms/embeddings.md
-          - Benchmarks: autolabel/guide/llms/benchmarks.md
+          - LLMs: autolabel/docs/guide/llms/llms.md
+          - Embedding Models: autolabel/docs/guide/llms/embeddings.md
+          - Benchmarks: autolabel/docs/guide/llms/benchmarks.md
       - Labeling Tasks:
-          - Classification Task: autolabel/guide/tasks/classification_task.md
-          - Multilabel Classification Task: autolabel/guide/tasks/multilabel_classification_task.md
-          - Entity Matching Task: autolabel/guide/tasks/entity_matching_task.md
-          - Named Entity Recognition Task: autolabel/guide/tasks/named_entity_recognition_task.md
-          - Question Answering Task: autolabel/guide/tasks/question_answering_task.md
-          - Attribute Extraction: autolabel/guide/tasks/attribute_extraction.md
+          - Classification Task: autolabel/docs/guide/tasks/classification_task.md
+          - Multilabel Classification Task: autolabel/docs/guide/tasks/multilabel_classification_task.md
+          - Entity Matching Task: autolabel/docs/guide/tasks/entity_matching_task.md
+          - Named Entity Recognition Task: autolabel/docs/guide/tasks/named_entity_recognition_task.md
+          - Question Answering Task: autolabel/docs/guide/tasks/question_answering_task.md
+          - Attribute Extraction: autolabel/docs/guide/tasks/attribute_extraction.md
       - Transformations:
-          - Introduction: autolabel/guide/transforms/introduction.md
-          - Webpage Transform: autolabel/guide/transforms/webpage_transform.md
-          - PDF Transform: autolabel/guide/transforms/pdf_transform.md
-          - Image Transform: autolabel/guide/transforms/image_transform.md
+          - Introduction: autolabel/docs/guide/transforms/introduction.md
+          - Webpage Transform: autolabel/docs/guide/transforms/webpage_transform.md
+          - PDF Transform: autolabel/docs/guide/transforms/pdf_transform.md
+          - Image Transform: autolabel/docs/guide/transforms/image_transform.md
       - Improving Labeling Accuracy:
-          - Prompting Better: autolabel/guide/accuracy/prompting-better.md
-          - Few-shot Prompting: autolabel/guide/accuracy/few-shot.md
-          - Confidence: autolabel/guide/accuracy/confidence.md
-          - Chain of Thought: autolabel/guide/accuracy/chain-of-thought.md
+          - Prompting Better: autolabel/docs/guide/accuracy/prompting-better.md
+          - Few-shot Prompting: autolabel/docs/guide/accuracy/few-shot.md
+          - Confidence: autolabel/docs/guide/accuracy/confidence.md
+          - Chain of Thought: autolabel/docs/guide/accuracy/chain-of-thought.md
       - Reliability and Robustness:
-          - LLM Output Caching: autolabel/guide/reliability/llm-output-caching.md
-          - State Management: autolabel/guide/reliability/state-management.md
-      - Working with Autolabel:
-          - Configs: autolabel/guide/resources/configs.md
-          - AutolabelDataset: autolabel/guide/resources/autolabel_dataset.md
-          - CLI: autolabel/guide/resources/CLI.md
-          - Refuel-provided Datasets: autolabel/guide/resources/refuel_datasets.md
-          - Synthetic Dataset Generation: autolabel/guide/resources/synthetic_dataset_generation.md
+          - LLM Output Caching: autolabel/docs/guide/reliability/llm-output-caching.md
+          - State Management: autolabel/docs/guide/reliability/state-management.md
+      - Working with autolabel/docs:
+          - Configs: autolabel/docs/guide/resources/configs.md
+          - autolabel/docsDataset: autolabel/docs/guide/resources/autolabel/docs_dataset.md
+          - CLI: autolabel/docs/guide/resources/CLI.md
+          - Refuel-provided Datasets: autolabel/docs/guide/resources/refuel_datasets.md
+          - Synthetic Dataset Generation: autolabel/docs/guide/resources/synthetic_dataset_generation.md
       - Reference:
-          - AutoLabeler: autolabel/reference/labeler.md
-          - Config: autolabel/reference/configs.md
-          - Models: autolabel/reference/models.md
-          - Tasks: autolabel/reference/tasks.md
-          - Schema: autolabel/reference/schema.md
-          - Cache: autolabel/reference/cache.md
-          - Example Selector: autolabel/reference/example_select.md
-          - Data Models: autolabel/reference/data_models.md
+          - autolabel/docser: autolabel/docs/reference/labeler.md
+          - Config: autolabel/docs/reference/configs.md
+          - Models: autolabel/docs/reference/models.md
+          - Tasks: autolabel/docs/reference/tasks.md
+          - Schema: autolabel/docs/reference/schema.md
+          - Cache: autolabel/docs/reference/cache.md
+          - Example Selector: autolabel/docs/reference/example_select.md
+          - Data Models: autolabel/docs/reference/data_models.md
 theme:
   name: material
   favicon: assets/favicon.ico
@@ -84,7 +84,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: [autolabel] # search packages in the autolabel folder
+          paths: [autolabel/docs] # search packages in the autolabel/docs folder
   - search
   - mkdocs-jupyter
   - table-reader
