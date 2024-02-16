@@ -370,7 +370,7 @@ inputs = [
   {'col_1': 'value_1', 'col_2': 'value_2' ...},
 ]
 
-response = refuel_client.label(application='<APPLICATION NAME>', inputs=inputs)
+response = refuel_client.label(application='<APPLICATION NAME>', inputs=inputs, explain=False)
 ```
 
 Each element in `inputs` is a dictionary, with keys as names of the input columns defined in the task. For example, let's consider an application for sentiment classification called `my_sentiment_classifier`, with two input fields - `source` and `text`. You can use it as follows:
@@ -398,12 +398,22 @@ response = refuel_client.label(application='my_sentiment_classifier', inputs=inp
      'refuel_fields': 
         {
           'sentiment': {
-            'label': 'positive,
+            'label': ['positive'],
             'confidence': 0.9758
           }
         }
     }]
 }
+```
+
+You can also set the optional `explain` parameter to `True` to get an explanation for why the provided label was returned. The explanation will be returned in the `explanation` field in the response, along with the `label` and `confidence`:
+
+```
+'sentiment': {
+    'label': ['positive'],
+    'confidence': 0.9758,
+    'explanation': 'The model predicted a positive sentiment because the text contains positive words like "liked" and "good".'
+  }
 ```
 
 
@@ -413,7 +423,7 @@ The SDK allows users to log feedback for online predictions. When logging predic
 
 ```python
 
-label = {'sentiment': 'negative'}
+label = {'sentiment': ['negative']}
 refuel_client.feedback(application='my_sentiment_classifier', refuel_uuid='...', label=label)
 ```
 
