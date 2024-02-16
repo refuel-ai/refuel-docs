@@ -22,7 +22,7 @@ hide:
 
     Label, clean and enrich text datasets with LLMs.
 
-    [:octicons-arrow-right-24: Docs](autolabel/introduction.md)
+    [:octicons-arrow-right-24: Docs](autolabel/docs/index.md)
 
 
     [:octicons-arrow-right-24: Github](https://github.com/refuel-ai/autolabel)
