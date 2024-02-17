@@ -28,7 +28,7 @@ Let's say we wanted to run sentiment analysis on a dataset of movie reviews. We 
 
 Now, we could label a few hundred examples by hand which would take us a few hours. Instead, let's use Autolabel to get a clean, labeled dataset in a few minutes.
 
-A dataset[^1] containing 200 unlabeled movie reviews is available [here](https://github.com/refuel-ai/autolabel/blob/main/docs/assets/movie_reviews_preview.csv), and a couple of examples (with labels) are shown below:
+A dataset[^1] containing 200 unlabeled movie reviews is available [here](https://github.com/refuel-ai/autolabel/blob/main/docs/assets/movie_reviews.csv), and a couple of examples (with labels) are shown below:
 
 {{ read_csv('docs/assets/movie_reviews_preview.csv') }}
 
@@ -89,7 +89,7 @@ config = {
 }
 ```
 
-*To create a custom configuration, you can use the [CLI](https://docs.refuel.ai/guide/resources/CLI) or [write your own](https://docs.refuel.ai/guide/resources/configs/).*
+*To create a custom configuration, you can use the [CLI](../resources/CLI.md) or [write your own](../resources/configs.md).*
 
 ### Preview the labeling against your dataset
 

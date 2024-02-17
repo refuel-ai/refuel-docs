@@ -23,9 +23,9 @@ get_data('civil_comments')
 
 The output is:
 ```
-Downloading seed example dataset to "seed.csv"...
+Downloading seed example dataset to "data/civil-comments/seed.csv"...
 100% [..............................................................................] 65757 / 65757
-Downloading test dataset to "test.csv"...
+Downloading test dataset to "data/civil-comments/test.csv"...
 100% [............................................................................] 610663 / 610663
 ```
 
@@ -73,14 +73,14 @@ config = {
     }
 }
 ```
-*To create a custom configuration, you can use the [CLI](https://docs.refuel.ai/guide/resources/CLI) or [write your own](https://docs.refuel.ai/guide/resources/configs).*
+*To create a custom configuration, you can use the [CLI](../resources/CLI.md) or [write your own](../resources/configs.md).*
 
 Now, we do the dry-run with `agent.plan`:
 ```python
 from autolabel import LabelingAgent, AutolabelDataset
 
 agent = LabelingAgent(config)
-ds = AutolabelDataset('test.csv', config = config)
+ds = AutolabelDataset('data/civil-comments/test.csv', config = config)
 agent.plan(ds)
 ```
 
