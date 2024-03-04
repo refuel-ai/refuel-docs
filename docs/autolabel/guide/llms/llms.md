@@ -352,6 +352,27 @@ config = {
 }
 ```
 
+### Additional parameters
+
+A few parameters can be passed in alongside `google` models to tweak their behavior:
+
+- `max_output_tokens` (int): Maximum number of tokens that can be generated in the response.
+- `temperature` (float): A float between 0 and 1 which indicates the diversity you want in the output. 0 uses greedy sampling (picks the most likely outcome).
+
+All the parameters that can be passed are given [here](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/gemini).
+These parameters can be passed in via the `params` dictionary under `model`. Here is an example:
+
+```python
+"model": {
+    "provider": "google",
+    "name": "gemini-pro",
+    "params": {
+        "max_output_tokens": 512,
+        "temperature": 0.1
+    }
+}
+```
+
 ### Model behavior
 
 `chat-bison@001` always responds in a "chatty" manner (example below), often returning more than just the requested label. This can cause problems on certain labeling tasks.
