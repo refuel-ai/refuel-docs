@@ -35,7 +35,7 @@ import refuel
 refuel_client = refuel.init()
 ```
 
-Alternatively, you can supply the API key as a parameter during initializtion as shared below. In the cloud application, there is a top-level dropdown to select the project you’re working on currently. And this selection powers all the pages downstream (datasets, labeling tasks etc). The SDK allows you to do this by setting the project during initialization as well:
+Alternatively, you can supply the API key as a parameter during initializtion as shared below. In the cloud application, there is a top-level dropdown to select the project you’re working on currently. And this selection powers all the pages downstream (datasets, tasks etc). The SDK allows you to do this by setting the project during initialization as well:
 
 ```python
 import refuel
@@ -78,7 +78,7 @@ refuel_client.create_project(
 
 ## Datasets
 
-These functions let you upload/download a full dataset, or fetch rows and LLM labels within a dataset.
+These functions let you upload/download a full dataset, or fetch rows and LLM outputs within a dataset.
 
 ### Get all current datasets
 
@@ -168,21 +168,21 @@ This function will return a pandas dataframe. Some details about the function pa
 | `max_items`  | No          | 100          | Max number of rows you want to fetch |
 | `offset`     | No          | 0            | If this is set to a positive number, say N, then the first N rows will be skipped and the API will return “max_items” number of rows after skipping the first N rows. |
 
-#### Querying items, along with labels from a labeling task
+#### Querying items, along with outputs from a task
 
-get_items() also allows you to provide an optional parameter - a labeling task. When provided, the function will also include the task results (LLM labels, confidence and manually confirmed labels, if any) for the returned items.
+get_items() also allows you to provide an optional parameter - a task name. When provided, the function will also include the task results (LLM outputs, confidence and manually provided feedback, if any) for the returned items.
 
 ```python
 items = refuel_client.get_items(
   dataset='<DATASET NAME>',
-  task='<LABELING TASK NAME>',
+  task='<TASK NAME>',
   max_items=100
 )
 ```
 
 #### Applying sort ordering when querying items
 
-By default, the API will use Refuel’s sort order (by decreasing order of diversity). You can use the `order_by` param to sort by any other columns in the dataset or by the label or confidence score from a labeling task.
+By default, the API will use Refuel’s sort order (by decreasing order of diversity). You can use the `order_by` param to sort by any other columns in the dataset or by the output or confidence score from a task.
 
 1) Sort by dataset column
 
@@ -194,7 +194,7 @@ items = refuel_client.get_items(
 )
 ```
 
-2) Sort by label or confidence score from a labeling task. Note that this requires a task name and a subtask name to be specified. `field` can be either 'label' or 'confidence'.
+2) Sort by the LLM output or confidence score from a task. Note that this requires a task name and a subtask name to be specified. `field` can be either 'label' or 'confidence'.
 
 ```python
 items = refuel_client.get_items(
@@ -254,9 +254,9 @@ Here’s the complete list of filter operators that are currently supported
 | `NOT LIKE`    | String does not match: True if value is not in field |
 | `NOT ILIKE`   | String does not match (case insensitive): True if value is not in field |
 
-## Labeling Tasks
+## Tasks
 
-These functions let you retrieve information about labeling tasks defined within a project, and start and cancel a task run.
+These functions let you retrieve information about tasks defined within a project, and start and cancel a task run.
 
 ### Define a new Task
 
@@ -284,7 +284,7 @@ refuel_client.create_task(
 
 - task_type is one of: `classification`, `multilabel_classification` or `attribute_extraction`
 - input_columns is the subset of columns from the dataset that will be used as input for LLM
-- fields is a list of dictionaries. Each dictionary contains a fixed set of keys: name (name of the LLM label field as it will be appear in the exported dataset), guidelines (labeling guidelines for the LLM) and labels (list of valid labels, this field is only required for classification type tasks)
+- fields is a list of dictionaries. Each dictionary contains a fixed set of keys: name (name of the LLM output field as it will be appear in the exported dataset), guidelines (instructions for the LLM) and labels (list of valid outputs, this field is only required for classification type tasks)
 
 ### Get Tasks
 
@@ -295,9 +295,9 @@ You can retrieve a list of all tasks within a given project as follows
 tasks = refuel_client.get_tasks()
 ```
 
-### Start a Labeling Task Run
+### Start a Task Run
 
-You can begin running a labeling task on a dataset with the following:
+You can begin running a task on a dataset with the following:
 
 ```python
 response = refuel_client.start_task_run(
@@ -307,11 +307,11 @@ response = refuel_client.start_task_run(
 )
 ```
 
-This will kick off a bulk labeling run for the specified task and dataset, and label 100 items in the dataset. If `num_items` parameter is not specified, it will label the entire dataset.
+This will kick off a bulk run for the specified task and dataset, and produce outputs for 100 items in the dataset. If `num_items` parameter is not specified, it will run on the entire dataset.
 
-### Cancel an ongoing labeling task run
+### Cancel an ongoing task run
 
-You can also cancel an ongoing labelling task with the same function as follows.
+You can also cancel an ongoing task with the function as follows:
 
 ```python
 response = refuel_client.cancel_task_run(
@@ -322,7 +322,7 @@ response = refuel_client.cancel_task_run(
 
 ### Get Task run status/progress
 
-To check on the status of an ongoing labeling task run, you can use the following function
+To check on the status of an ongoing task run, you can use the following function
 
 ```python
 task_run = refuel_client.get_task_run(
@@ -333,11 +333,11 @@ task_run = refuel_client.get_task_run(
 
 ## Applications
 
-Refuel allows you to deploy a labeling task as an application. Applications allow you to label data synchronously on demand, primarily for online workloads.
+Refuel allows you to deploy a task as an application. Applications allow you to process data synchronously on demand, primarily for online workloads.
 
-### Deploy labeling application
+### Deploy an application
 
-To deploy an existing task as a labeling application, you can use the following function
+To deploy an existing task as an application, you can use the following function
 
 ```python
 import refuel
@@ -352,15 +352,15 @@ refuel_client = refuel.init(**options)
 response = refuel_client.deploy_task(task='<TASK NAME>')
 ```
 
-### Get all labeling application
+### Get all applications
 
-To get all labeling applications that are currently deployed, use the following function
+To get all applications that are currently deployed, use the following function
 
 ```python
 applications = refuel_client.get_applications()
 ```
 
-### Label using a deployed application
+### Using a deployed application
 
 You can use the deployed application for online predictions as follows:
 
