@@ -127,7 +127,7 @@ config = {
         "params": {}
     },
     "prompt": {
-        "task_guidelines": "You are an expert at answering questions.",z
+        "task_guidelines": "You are an expert at answering questions.",
         "example_template": "Question: {question}\nAnswer: {answer}"
     }
 }
