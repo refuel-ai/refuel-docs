@@ -157,10 +157,16 @@ These parameters can be passed in via the `params` dictionary under `model`. Her
 
 To use models from [Anthropic](https://www.anthropic.com/index/introducing-claude), you can set the `provider` to `anthropic` when creating a labeling configuration. The specific model that will be queried can be specified using the `name` key. Autolabel currently supports the following models from Anthropic:
 
-- `claude-instant-v1`
-- `claude-v1`
+- `claude-instant-1.2`
+- `claude-2.0`
+- `claude-2.1`
+- `claude-3-opus-20240229`
+- `claude-3-sonnet-20240229`
+- `claude-3-haiku-20240307`
 
-`claude-v1` is a state-of-the-art high-performance model, while `claude-instant-v1` is a lighter, less expensive, and much faster option. `claude-instant-v1` is ~6.7 times cheaper than `claude-v1`, at $1.63/1 million tokens. On the other hand `claude-v1` costs $11.02/1 million tokens.
+`claude-3-opus-20240229` is a state-of-the-art high-performance model, while `claude-3-sonnet-20240229` is a lighter, less expensive, and much faster option. `claude-3-sonnet-20240229` is 5 times cheaper than `claude-3-opus-20240229`, at $3/1 million tokens. On the other hand `claude-3-opus-20240229` costs $15/1 million tokens. `claude-3-haiku-20240307` is the lightest and fastest model, and is 12 times cheaper than `claude-3-sonnet-20240229`, at $0.25/1 million tokens.
+
+`claude-instant-1.2`, `claude-2.0`, and `claude-2.1` are older legacy models and are not recommended for new tasks. Detailed pricing for these models is available [here](https://www.anthropic.com/api#pricing). One may use `claude-instant-1.2` for a cheaper alternative to any model and `claude-2.0` and `claude-2.1` for a cheaper alternative to `claude-3-opus-20240229`.
 
 ### Setup
 
@@ -214,7 +220,7 @@ These parameters can be passed in via the `params` dictionary under `model`. Her
 ```python
 "model": {
     "provider": "anthropic",
-    "name": "claude-instant-v1",
+    "name": "claude-2.0",
     "params": {
         "max_tokens_to_sample": 512,
         "temperature": 0.1
@@ -303,24 +309,25 @@ To use Llama 2, you can use the following model configuration:
 }
 ```
 
-## Google PaLM
+## Google Gemini
 
 To use models from [Google](https://developers.generativeai.google/products/palm), you can set the `provider` to `google` when creating a labeling configuration. The specific model that will be queried can be specified using the `name` key. Autolabel currently supports the following models from Google:
 
-- `text-bison@001`
-- `chat-bison@001`
+- `gemini-pro`
 
-`text-bison@001` is often more suitable for labeling tasks due to its ability to follow natural language instructions. `chat-bison@001` is fine-tuned for multi-turn conversations. `text-bison@001` costs $0.001/1K characters and `chat-bison@001` costs half that at $0.0005/1K characters. Detailed pricing for these models is available [here](https://cloud.google.com/vertex-ai/pricing#generative_ai_models)
+`gemini-pro` is the most capable (and most expensive) from Google. Catch the announcement of the model [here](https://deepmind.google/technologies/gemini/#introduction).
 
 ### Setup
 
 To use Google models with Autolabel, make sure to first install the relevant packages by running:
 
-```bash
-pip install 'refuel-autolabel[google]'
+and also setting the following environment variable:
+
+```
+export GOOGLE_API_KEY=<your-google-key>
 ```
 
-and also setting up [Google authentication](https://cloud.google.com/docs/authentication/application-default-credentials) locally.
+replacing `<your-google-key>` with your API key, which you can get from [here](https://ai.google.dev).
 
 ### Example usage
 
@@ -336,7 +343,7 @@ config = {
     },
     "model": {
         "provider": "google",
-        "name": "text-bison@001",
+        "name": "gemini-pro",
         "params": {}
     },
     "prompt": {
@@ -353,12 +360,13 @@ A few parameters can be passed in alongside `google` models to tweak their behav
 - `max_output_tokens` (int): Maximum number of tokens that can be generated in the response.
 - `temperature` (float): A float between 0 and 1 which indicates the diversity you want in the output. 0 uses greedy sampling (picks the most likely outcome).
 
+All the parameters that can be passed are given [here](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/gemini).
 These parameters can be passed in via the `params` dictionary under `model`. Here is an example:
 
 ```python
 "model": {
     "provider": "google",
-    "name": "text-bison@001",
+    "name": "gemini-pro",
     "params": {
         "max_output_tokens": 512,
         "temperature": 0.1
@@ -454,12 +462,14 @@ The table lists out all the provider, model combinations that Autolabel supports
 | openai               | text-davinci-003                                                                                                                                                                                                     |
 | openai               | [gpt-3.5-turbo models](https://platform.openai.com/docs/models/gpt-3-5)                                                                                                                                              |
 | openai               | [gpt-4 models](https://platform.openai.com/docs/models/gpt-4)                                                                                                                                                        |
-| anthropic            | claude-v1                                                                                                                                                                                                            |
-| anthropic            | claude-instant-v1                                                                                                                                                                                                    |
+| anthropic            | claude-instant-1.2                                                                                                                                                                                                   |
+| anthropic            | claude-2.0                                                                                                                                                                                                           |
+| anthropic            | claude-2.1                                                                                                                                                                                                           |
+| anthropic            | claude-opus-20240229                                                                                                                                                                                                 |
+| anthropic            | claude-sonnet-20240229                                                                                                                                                                                               |
 | huggingface_pipeline | [seq2seq models](https://huggingface.co/learn/nlp-course/chapter1/7?fw=pt#sequencetosequence-modelssequencetosequencemodels) and [causalLM models](https://huggingface.co/docs/transformers/tasks/language_modeling) |
 | refuel               | flan-t5-xxl                                                                                                                                                                                                          |
-| google               | text-bison@001                                                                                                                                                                                                       |
-| google               | chat-bison@001                                                                                                                                                                                                       |
+| google               | gemini-pro                                                                                                                                                                                                           |
 | cohere               | command                                                                                                                                                                                                              |
 | cohere               | command-light                                                                                                                                                                                                        |
 | cohere               | base                                                                                                                                                                                                                 |
