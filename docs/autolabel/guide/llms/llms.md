@@ -162,8 +162,9 @@ To use models from [Anthropic](https://www.anthropic.com/index/introducing-claud
 - `claude-2.1`
 - `claude-3-opus-20240229`
 - `claude-3-sonnet-20240229`
+- `claude-3-haiku-20240307`
 
-`claude-3-opus-20240229` is a state-of-the-art high-performance model, while `claude-3-sonnet-20240229` is a lighter, less expensive, and much faster option. `claude-3-sonnet-20240229` is 5 times cheaper than `claude-3-opus-20240229`, at $3/1 million tokens. On the other hand `claude-v1` costs $15/1 million tokens.
+`claude-3-opus-20240229` is a state-of-the-art high-performance model, while `claude-3-sonnet-20240229` is a lighter, less expensive, and much faster option. `claude-3-sonnet-20240229` is 5 times cheaper than `claude-3-opus-20240229`, at $3/1 million tokens. On the other hand `claude-3-opus-20240229` costs $15/1 million tokens. `claude-3-haiku-20240307` is the lightest and fastest model, and is 12 times cheaper than `claude-3-sonnet-20240229`, at $0.25/1 million tokens.
 
 `claude-instant-1.2`, `claude-2.0`, and `claude-2.1` are older legacy models and are not recommended for new tasks. Detailed pricing for these models is available [here](https://www.anthropic.com/api#pricing). One may use `claude-instant-1.2` for a cheaper alternative to any model and `claude-2.0` and `claude-2.1` for a cheaper alternative to `claude-3-opus-20240229`.
 
