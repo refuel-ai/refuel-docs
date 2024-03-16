@@ -113,8 +113,7 @@ refuel_client = refuel.init(**options)
 
 dataset = refuel_client.upload_dataset(
   file_path='<PATH TO CSV FILE>',
-  dataset_name='<NEW DATASET NAME>',
-  embedding_columns=['<COLUMN 1>', …]
+  dataset_name='<NEW DATASET NAME>'
 )
 ```
 
@@ -124,7 +123,6 @@ Some details about the function parameters:
 | :-----------------   | :-----------| :----------| :------- |
 | `file_path`   | Yes         | -          | Path to the data you wish to upload |
 | `dataset_name`| Yes         | -          | Unique name of the dataset being uploaded |
-| `embedding_columns` | No    | Empty List | Column(s) that will be used as inputs when computing embedding representation for this row |
 
 ### Download Dataset
 
@@ -215,13 +213,17 @@ You may have multiple dicts in the `order_by` list if you would like to sort by 
 
 #### Applying filters when querying items
 
-In addition to sorting options, you can also define filters to only fetch items in the dataset that match a certain criteria. A filter such as “column = value” is defined as a Python dictionary with three keys:
+In addition to sorting options, you can also define filters to only fetch items in the dataset that match a specific criteria. The SDK supports three types of filters:
+
+1) Metadata Filters:
+
+Filter based on the value of a specific column, for e.g. a filter such as “column = value” is defined as a Python dictionary with three keys:
 
 - field:  This is the column on which you want to apply the filter
 - operator: This is the comparison operator
 - value: This is the value to compare to
 
-Here’s an example of how to define and use filters in the SDK:
+Here’s an example:
 
 ```python
 items_filter = {
@@ -237,7 +239,76 @@ items = refuel_client.get_dataset_items(
 )
 ```
 
-Here’s the complete list of filter operators that are currently supported
+2) LLM output value/confidence filter:
+
+Filter items based on the LLM output value or confidence score from a specific task configured in Refuel.
+
+Here's a concrete example: Let's say you configured a classification task called `Sentiment Analysis` in your Refuel account, which has two subtasks (output fields):
+
+(i) `predicted_sentiment` - the predicted sentiment
+
+(ii) `explanation` - a one sentence explanation of why the LLM output the predicted sentiment as Positive or Negative for the item.
+
+Here are a few filters we can define for this task:
+
+* "predicted sentiment is Positive":
+  
+```python
+{
+  'field': 'llm_label',
+  'subtask': 'predicted_sentiment'
+  'operator': '=',
+  'value': 'Positive'
+}
+```
+
+* "predicted sentiment confidence >= 80%":
+  
+```python
+{
+  'field': 'confidence',
+  'subtask': 'predicted_sentiment'
+  'operator': '>=',
+  'value': '0.8'
+}
+```
+
+* "predicted sentiment does not agree with the ground truth label (available in a column called `ground_truth_sentiment`)":
+  
+```python
+{
+  'field': 'llm_label',
+  'subtask': 'predicted_sentiment'
+  'operator': '<>',
+  'value': 'ground_truth_sentiment'
+}
+```
+
+
+3) Semantic search filter:
+
+Filter based on semantic similarity to a “query item” in a dataset. Semantic search queries are mapped to approximate nearest neighbor searches in an embedding space. These filters are defined as a Python dictionary with two keys:
+
+- operator: always set to "SIMILAR"
+- value: This is query item, identified by the uuid in the `refuel_uuid` column.
+
+Here’s an example of how to define a semantic search filter. The results are returned in decreasing order of similarity score:
+
+```python
+items_filter = {
+  'operator': 'SIMILAR',
+  'value': '020b434f-e1d7-4b0e-bfc1-beded36c806a'
+}
+
+items = refuel_client.get_dataset_items(
+  dataset='<DATASET NAME>',
+  max_items=10,
+  filters = [items_filter] 
+)
+```
+
+
+Here’s the complete list of filter operators that are currently supported:
 
 | Operator      | Description |
 | :----------   | :-----------|
@@ -253,6 +324,7 @@ Here’s the complete list of filter operators that are currently supported
 | `ILIKE`       | String matching (case insensitive): True if value is in field |
 | `NOT LIKE`    | String does not match: True if value is not in field |
 | `NOT ILIKE`   | String does not match (case insensitive): True if value is not in field |
+| `SIMILAR`     | Semantic similarity filter operator |
 
 ## Labeling Tasks
 
