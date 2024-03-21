@@ -49,6 +49,8 @@ refuel_client = refuel.init(**options)
 ```
 
 Here’s the complete list of initialization options currently supported:
+
+
 | Option           | Is Required | Default Value | Comments |
 | :-------------   | :-----------| :-------------| :------- |
 | `api_key`        | Yes         | None          | Used to authenticate all requests to the API server |
