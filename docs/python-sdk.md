@@ -48,6 +48,15 @@ options = {
 refuel_client = refuel.init(**options)
 ```
 
+Here’s the complete list of initialization options currently supported:
+| Option           | Is Required | Default Value | Comments |
+| :-------------   | :-----------| :-------------| :------- |
+| `api_key`        | Yes         | None          | Used to authenticate all requests to the API server |
+| `project`        | Yes         | None          | The name of the project you plan to use for the current session. This is analogous to setting the project from the top-level dropdown in the app.refuel.ai |
+| `timeout`        | No          | 60            | Timeout in seconds |
+| `max_retries`    | No          | 3             | Max number of retries for failed requests |
+| `max_workers`    | No          | Num CPUs (os.cpu_count()) | Max number of concurrent requests to the API server |
+
 
 ## Projects
 
@@ -302,6 +311,7 @@ items_filter = {
 
 items = refuel_client.get_dataset_items(
   dataset='<DATASET NAME>',
+  task='<TASK NAME>'
   max_items=10,
   filters = [items_filter] 
 )
