@@ -362,13 +362,28 @@ refuel_client.create_task(
     dataset='<DATASET NAME>',
     input_columns=['col 1', 'col 2' ...],
     context = '...',
-    fields = [{'name': '...', 'guidelines': ...}]
+    fields = [{'name': '...', 'guidelines': ...}],
+    model = '...'
 )
 ```
 
-- task_type is one of: `classification`, `multilabel_classification` or `attribute_extraction`
-- input_columns is the subset of columns from the dataset that will be used as input for LLM
-- fields is a list of dictionaries. Each dictionary contains a fixed set of keys: name (name of the LLM label field as it will be appear in the exported dataset), guidelines (labeling guidelines for the LLM) and labels (list of valid labels, this field is only required for classification type tasks)
+- `task_type` is one of: `classification`, `multilabel_classification` or `attribute_extraction`
+- `input_columns` is the subset of columns from the dataset that will be used as input for LLM
+- `fields` is a list of dictionaries. Each dictionary contains a fixed set of keys:
+  - `name` (name of the LLM label field as it will be appear in the exported dataset)
+  - `guidelines` (labeling guidelines for the LLM)
+  - `labels` (list of valid labels, this field is only required for classification type tasks)
+- `model` is an optional parameter to select the LLM that will be used for this task. If not specified, we will use the default LLM set for your team. Here is the list of LLMs currently supported:
+  - GPT-4 Turbo
+  - GPT-4
+  - GPT-3.5 Turbo
+  - GPT-3.5 Turbo (16K)
+  - Claude 3 (Opus)
+  - Claude 3 (Sonnet)
+  - Claude 3 (Haiku)
+  - Gemini (Pro)
+  - Mistral Small
+  - Mistral Large
 
 ### Get Tasks
 
