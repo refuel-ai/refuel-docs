@@ -517,6 +517,12 @@ You can also set the optional `explain` parameter to `True` to get an explanatio
   }
 ```
 
+If you would only like to get an explanation for certain fields, you can optionally provide a list of field names in the `explain_fields` parameter for which you want an explanation returned. If `explain_fields` is provided, explanations will be returned regardless of whether `explain` is set to `True` or `False`. Here's an example of how to get explanations for the `sentiment` field in the `my_sentiment_classifier` application:
+
+```python
+response = refuel_client.label(application='my_sentiment_classifier', inputs=inputs, explain=True, explain_fields=['sentiment'])
+```
+
 
 ### Share feedback for application outputs
 
