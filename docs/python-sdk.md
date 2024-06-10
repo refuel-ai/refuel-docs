@@ -164,7 +164,7 @@ refuel_client = refuel.init(**options)
 
 items = refuel_client.get_items(
   dataset='<DATASET NAME>',
-  max_items=100,
+  max_items=20,
   offset=0
 )
 ```
@@ -174,7 +174,7 @@ This function will return a pandas dataframe. Some details about the function pa
 | Option       | Is Required | Default Value | Comments |
 | :------------  | :-----------| :-------------| :------- |
 | `dataset`    | Yes         | -            | Name of the dataset you want to query and retrieve items (rows) from |
-| `max_items`  | No          | 100          | Max number of rows you want to fetch |
+| `max_items`  | No          | 20           | Max number of rows you want to fetch |
 | `offset`     | No          | 0            | If this is set to a positive number, say N, then the first N rows will be skipped and the API will return “max_items” number of rows after skipping the first N rows. |
 
 #### Querying items, along with labels from a labeling task
@@ -521,6 +521,12 @@ If you would only like to get an explanation for certain fields, you can optiona
 
 ```python
 response = refuel_client.label(application='my_sentiment_classifier', inputs=inputs, explain=True, explain_fields=['sentiment'])
+```
+
+You can also set the optional `telemetry` parameter to `True` to get additional info such as the model, provider, and number of tokens used (prompt, output, and total) in the request. The telemetry data will be returned in the `usage` field in the response.
+
+```python
+response = refuel_client.label(application='my_sentiment_classifier', inputs=inputs, telemetry=True)
 ```
 
 
