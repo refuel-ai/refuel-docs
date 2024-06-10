@@ -523,6 +523,12 @@ If you would only like to get an explanation for certain fields, you can optiona
 response = refuel_client.label(application='my_sentiment_classifier', inputs=inputs, explain=True, explain_fields=['sentiment'])
 ```
 
+You can also set the optional `telemetry` parameter to `True` to get additional info such as the model, provider, and number of tokens used (prompt, output, and total) in the request. The telemetry data will be returned in the `usage` field in the response.
+
+```python
+response = refuel_client.label(application='my_sentiment_classifier', inputs=inputs, telemetry=True)
+```
+
 
 ### Share feedback for application outputs
 
