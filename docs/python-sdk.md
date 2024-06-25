@@ -148,6 +148,29 @@ response = refuel_client.download_dataset(
 
 This is an asynchronous workflow, and when the dataset is available for download, Refuel will send an email to the email address. Make sure the email address belongs to a valid user from your team. Depending on the size of the dataset, this export step can take a few minutes. Once the download link is created and emailed, it will be valid for 24 hours.
 
+### Adding items (rows) to an uploaded dataset
+
+This function lets you append new rows to an existing dataset. Keep in mind that the dataset schema is decided during initial upload and is not updated here.
+
+```python
+import refuel
+
+options = {
+    "api_key": "<YOUR API KEY>",
+    "project": "<PROJECT NAME>",
+}
+
+refuel_client = refuel.init(**options)
+
+new_items_to_add = [
+  {"column1": "value1", "column2": "value2", ...},
+  {"column1": "value3", "column2": "value4", ...},
+  ...
+]
+
+refuel_client.add_items(dataset='<DATASET NAME>', items=new_items_to_add)
+```
+
 ### Querying items (rows) in a dataset
 
 In addition to downloading the entire dataset, you can also fetch a list of items (rows) from the dataset as follows:
