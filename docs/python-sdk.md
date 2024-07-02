@@ -455,6 +455,41 @@ task_run = refuel_client.get_task_run(
 )
 ```
 
+The `task_run` object has the following schema:
+
+```python
+{
+ 'id': '...',
+ 'task_id': '...',
+ 'task_name': '...',
+ 'dataset_id': '...',
+ 'dataset_name': '...',
+ 'model_name': '...',   # This is the LLM used for the run
+ 'status': 'active',    # Status of the task run
+ 'metrics': [           # Metrics related to the task run
+      {'name': 'num_labeled', 'value': ... },
+      {'name': 'num_remaining', 'value': ...},
+      {'name': 'time_elapsed_seconds', 'value': ...},
+      {'name': 'time_remaining_seconds', 'value': ...},
+ ]
+}
+```
+
+`status` enum shows the current task run status. It can be one of the following values:
+
+- `not_started`: this is the starting state before the batch run has been kicked off
+- `active`: a batch task run is ongoing
+- `paused`: the batch run was paused before the full dataset was labeled.
+- `failed`: the batch run failed due to a platform error. This should ideally never happen
+- `completed`: the batch run was completed successfully
+
+`metrics` is a list containing all metrics for the current task run. Currently the platform supports the following metrics:
+
+- `num_labeled`: number of rows from the dataset that have been labeled
+- `num_remaining` number of rows from the dataset that are remaining
+- `time_elapsed_seconds`: time (in seconds) since the task run started. This is only populated when the task run is active (since this metric is not valid when there is no active run).
+- `time_remaining_seconds` estimated time (in seconds) remaining for the task run to complete. This is only populated when the task run is active (since this metric is not valid when there is no active run).
+
 ## Applications
 
 Refuel allows you to deploy a labeling task as an application. Applications allow you to label data synchronously on demand, primarily for online workloads.
