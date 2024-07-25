@@ -599,3 +599,46 @@ refuel_client.feedback(application='my_sentiment_classifier', refuel_uuid='...',
 ```
 
 Any row with logged feedback will appear with the verified check mark ("✓") in the cloud application.
+
+## Finetuning
+
+Refuel allows you to finetune a model based on all the human reviewed data and optionally data labeled by an LLM. Finetuned models allow you to reduce labeling cost and latency while achieving similar, and in some cases better, performance than LLMs like GPT-4.
+
+### Starting a finetuning run
+
+To start a model finetuning run, you can use the following function:
+
+```python
+import refuel
+
+options = {
+    "api_key": "<YOUR API KEY>",
+    "project": "<PROJECT NAME>",
+}
+
+refuel_client = refuel.init(**options)
+
+hyperparameters = {"num_epochs": 1}
+datasets = ["dataset_0_id", "dataset_1_id"]
+response = refuel_client.finetune_model(task_id='<TASK ID>', model='<BASE MODEL>', hyperparameters=hyperparameters, datasets=datasets)
+```
+
+Supported Base Models: ['refuel-llm-v2-large', 'refuel-llm-v2-small']
+Supported hyperparameters: ['lora_r', 'lora_alpha', 'lora_dropout', 'weight_decay', 'learning_rate', 'cosine_min_lr_ratio']
+
+### Get all finetuned models
+
+You can retrieve a list of all models within a given project as follows
+
+```python
+
+models = refuel_client.get_finetuned_models(task_id='<TASK ID>')
+```
+
+### Cancel a finetuning run
+
+You can also cancel an ongoing finetuning run as follows.
+
+```python
+response = refuel_client.cancel_finetuning(model_id='<FINETUNING MODEL ID>')
+```
