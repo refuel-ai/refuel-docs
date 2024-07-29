@@ -381,7 +381,6 @@ refuel_client = refuel.init(**options)
 
 refuel_client.create_task(
     task='<TASK NAME>',
-    task_type='<TASK TYPE>',
     dataset='<DATASET NAME>',
     context = '...',
     fields = [{'name': '...', 'guidelines': '...', 'type': '...', 'input_columns': ['...']}],
@@ -390,7 +389,6 @@ refuel_client.create_task(
 )
 ```
 
-- `task_type` is one of: `classification`, `multilabel_classification` or `attribute_extraction`
 - `context` is a string that describes the task and its overall purpose (i.e. 'You are tasked with classifying the sentiment of a given text')
 - `fields` is a list of dictionaries. Each dictionary contains a fixed set of keys: `name` (name of the LLM label field as it will be appear in the exported dataset), `guidelines` (labeling guidelines for the LLM), `type` (type of the field, can be `classification`, `multilabel_classification`, `attribute_extraction`), `input_columns` (list of columns to be used as input for the LLM, which can be columns from the dataset, other field names, or enrichment names), `labels` (list of valid labels, this field is only required for classification type tasks)
 - `enrichments` is an optional list of dictionaries. Each dictionary contains a fixed set of keys: `name` (name of the enrichment field as it will be appear in the exported dataset), `type` (type of enrichment, can be `webpage_transform` or `web_search`), `input_columns` (list of columns to be used as input for the enrichment, which can be columns from the dataset, field names, or other enrichment names) `guidelines` (this field is only needed for the web search enrichment and should contain a template for the search query using the input columns i.e. "news about {column1}")
