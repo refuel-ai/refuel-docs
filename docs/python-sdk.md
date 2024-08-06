@@ -381,18 +381,17 @@ refuel_client = refuel.init(**options)
 
 refuel_client.create_task(
     task='<TASK NAME>',
-    task_type='<TASK TYPE>',
     dataset='<DATASET NAME>',
-    input_columns=['col 1', 'col 2' ...],
     context = '...',
-    fields = [{'name': '...', 'guidelines': ...}],
+    fields = [{'name': '...', 'guidelines': '...', 'type': '...', 'input_columns': ['...']}],
     model = '...'
 )
 ```
 
 - `task_type` is one of: `classification`, `multilabel_classification` or `attribute_extraction`
 - `input_columns` is the subset of columns from the dataset that will be used as input for LLM
-- `fields` is a list of dictionaries. Each dictionary contains a fixed set of keys: `name` (name of the LLM label field as it will be appear in the exported dataset), `guidelines` (labeling guidelines for the LLM), `labels` (list of valid labels, this field is only required for classification type tasks) and `fallback_value` (default value to use when no valid labels are returned by the LLM).
+- `context` is a string that describes the task and its overall purpose (i.e. 'You are tasked with classifying the sentiment of a given text')
+- `fields` is a list of dictionaries. Each dictionary contains a fixed set of keys: `name` (name of the LLM label field as it will be appear in the exported dataset), `guidelines` (labeling guidelines for the LLM, or a query template if the field `type` is `webpage_transform` i.e. "{name} results"), `type` (type of the field, can be `classification`, `multilabel_classification`, `attribute_extraction`, `webpage_transform`, `web_search`), `input_columns` (list of columns to be used as input for the LLM, which can be columns from the dataset or other field names,), `labels` (list of valid labels, this field is only required for classification type tasks), and `fallback_value` (default value to use when no valid labels are returned by the LLM).
 - `model` is an optional parameter to select the LLM that will be used for this task. If not specified, we will use the default LLM set for your team. Here is the list of LLMs currently supported (use the model name as the parameter value):
 
 
