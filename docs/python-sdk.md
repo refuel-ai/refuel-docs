@@ -367,7 +367,7 @@ These functions let you retrieve information about labeling tasks defined within
 
 ### Define a new Task
 
-You can create a new task programmatically within a given project as follows:
+You can create a new task programmatically within a given project using the `create_task` function:
 
 ```python
 import refuel
@@ -382,31 +382,63 @@ refuel_client = refuel.init(**options)
 refuel_client.create_task(
     task='<TASK NAME>',
     dataset='<DATASET NAME>',
-    context = '...',
-    fields = [{'name': '...', 'guidelines': '...', 'type': '...', 'input_columns': ['...']}],
-    model = '...'
+    context = 'You are an expert at analyzing sentiment of an online review about a business...',
+    fields = [
+        {
+          'name': '...',
+          'type': '...',
+          'guidelines': '...',
+          'labels': [...],
+          'input_columns': [...],
+          'fallback_value': '...'
+        }, 
+        ...
+    ],
+    model = 'GPT-4 Turbo'
 )
 ```
 
-- `task_type` is one of: `classification`, `multilabel_classification` or `attribute_extraction`
-- `input_columns` is the subset of columns from the dataset that will be used as input for LLM
-- `context` is a string that describes the task and its overall purpose (i.e. 'You are tasked with classifying the sentiment of a given text')
-- `fields` is a list of dictionaries. Each dictionary contains a fixed set of keys: `name` (name of the LLM label field as it will be appear in the exported dataset), `guidelines` (labeling guidelines for the LLM, or a query template if the field `type` is `webpage_transform` i.e. "{name} results"), `type` (type of the field, can be `classification`, `multilabel_classification`, `attribute_extraction`, `webpage_transform`, `web_search`), `input_columns` (list of columns to be used as input for the LLM, which can be columns from the dataset or other field names,), `labels` (list of valid labels, this field is only required for classification type tasks), and `fallback_value` (default value to use when no valid labels are returned by the LLM).
-- `model` is an optional parameter to select the LLM that will be used for this task. If not specified, we will use the default LLM set for your team. Here is the list of LLMs currently supported (use the model name as the parameter value):
+Some details about the various parameters you see in the function signature above:
 
+| Parameter          | Is Required | Default Value | Comments |
+| :-------------     | :-----------| :-------------| :------- |
+| `task`             | Yes         | None          | Name of the new task you're creating |
+| `dataset`          | Yes         | None          | Dataset (in Refuel) for which you are defining this task |
+| `context`          | Yes         | None          | Context is a high level description of the problem domain and the dataset that the LLM will be working with. It typically starts with something like 'You are and expert at ...' |
+| `fields`           | Yes         | None          | This is a list of dictionaries. Each entry in this list defines an output field generated in the task. See below for details about the schema of each field |
+| `model`            | No          | team default  | LLM that will be used for this task. If not specified, we will use the default LLM set for your team, e.g. GPT-4 Turbo |
+
+
+Next, let's take a look at the schema of each entry in the `fields` list above:
+
+| Parameter          | Is Required | Default Value | Comments |
+| :-------------     | :-----------| :-------------| :------- |
+| `name`             | Yes         | None          | Name of the output field, e.g. `llm_predicted_sentiment` |
+| `type`             | Yes         | None          | Type of output field. This is one of: [`classification`, `multilabel_classification`, `attribute_extraction`, `webpage_transform`, `web_search`] |
+| `guidelines`       | Yes         | None          | Output guidelines for the LLM for this field. Note that if the field type is a `web_search` type, the guidelines will be simply the query template |
+| `labels`           | Yes (for classification field types) | None          | list of valid labels, this field is only required for classification type tasks |
+| `input_columns`    | Yes         | None          | Columns from the dataset to use as input when passing a "row" in the dataset to the LLM.|
+| `ground_truth_column`| No       | None          | A column in the dataset that contains ground truth value for this field, if one exists. Note this is an optional parameter. |
+| `fallback_value`   | No         | None          | A fallback/default value that the LLM should generate for this field if a row cannot be processed successfully |
+
+
+Finally, here is the list of LLMs currently supported (use the model name as the parameter value):
 
 | Provider      | Name |
 | :----------   | :---|
 | OpenAI        | GPT-4 Turbo |
+| OpenAI        | GPT-4o      |
+| OpenAI        | GPT-4o mini |
 | OpenAI        | GPT-4       |
 | OpenAI        | GPT-3.5 Turbo |
-| OpenAI        | GPT-3.5 Turbo (16K) |
+| Anthropic     | Claude 3.5 (Sonnet) |
 | Anthropic     | Claude 3 (Opus) |
-| Anthropic     | Claude 3 (Sonnet) |
 | Anthropic     | Claude 3 (Haiku) |
 | Google        | Gemini 1.5 (Pro) |
 | Mistral       | Mistral Small |
 | Mistral       | Mistral Large |
+| Refuel        | Refuel LLM-2 |
+| Refuel        | Refuel LLM-2-small |
 
 
 ### Get Tasks
