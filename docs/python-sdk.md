@@ -392,7 +392,7 @@ refuel_client.create_task(
 
 - `task_type` is one of: `classification`, `multilabel_classification` or `attribute_extraction`
 - `input_columns` is the subset of columns from the dataset that will be used as input for LLM
-- `fields` is a list of dictionaries. Each dictionary contains a fixed set of keys: `name` (name of the LLM label field as it will be appear in the exported dataset), `guidelines` (labeling guidelines for the LLM) and `labels` (list of valid labels, this field is only required for classification type tasks)
+- `fields` is a list of dictionaries. Each dictionary contains a fixed set of keys: `name` (name of the LLM label field as it will be appear in the exported dataset), `guidelines` (labeling guidelines for the LLM), `labels` (list of valid labels, this field is only required for classification type tasks) and `fallback_value` (default value to use when no valid labels are returned by the LLM).
 - `model` is an optional parameter to select the LLM that will be used for this task. If not specified, we will use the default LLM set for your team. Here is the list of LLMs currently supported (use the model name as the parameter value):
 
 
