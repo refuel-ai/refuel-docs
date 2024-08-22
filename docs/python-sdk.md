@@ -3,7 +3,6 @@ hide:
   - navigation
 ---
 
-
 # Refuel SDK Guide
 
 **Refuel SDK** is a Python library to programmatically call Refuel's APIs. This guide describes how to install and use the Refuel SDK.
@@ -50,15 +49,13 @@ refuel_client = refuel.init(**options)
 
 Here’s the complete list of initialization options currently supported:
 
-
-| Option             | Is Required | Default Value | Comments |
-| :-------------     | :-----------| :-------------| :------- |
-| `api_key`          | Yes         | None          | Used to authenticate all requests to the API server |
-| `project`          | Yes         | None          | The name of the project you plan to use for the current session |
-| `timeout`          | No          | 60            | Timeout in seconds |
-| `max_retries`      | No          | 3             | Max number of retries for failed requests |
-| `max_workers`      | No          | Num CPUs (os.cpu_count()) | Max number of concurrent requests to the API server |
-
+| Option        | Is Required | Default Value             | Comments                                                        |
+| :------------ | :---------- | :------------------------ | :-------------------------------------------------------------- |
+| `api_key`     | Yes         | None                      | Used to authenticate all requests to the API server             |
+| `project`     | Yes         | None                      | The name of the project you plan to use for the current session |
+| `timeout`     | No          | 60                        | Timeout in seconds                                              |
+| `max_retries` | No          | 3                         | Max number of retries for failed requests                       |
+| `max_workers` | No          | Num CPUs (os.cpu_count()) | Max number of concurrent requests to the API server             |
 
 ## Projects
 
@@ -130,10 +127,10 @@ dataset = refuel_client.upload_dataset(
 
 Some details about the function parameters:
 
-| Option        | Is Required | Default Value | Comments |
-| :-----------------   | :-----------| :----------| :------- |
-| `file_path`   | Yes         | -          | Path to the data you wish to upload |
-| `dataset_name`| Yes         | -          | Unique name of the dataset being uploaded |
+| Option         | Is Required | Default Value | Comments                                  |
+| :------------- | :---------- | :------------ | :---------------------------------------- |
+| `file_path`    | Yes         | -             | Path to the data you wish to upload       |
+| `dataset_name` | Yes         | -             | Unique name of the dataset being uploaded |
 
 ### Download Dataset
 
@@ -192,13 +189,13 @@ items = refuel_client.get_items(
 )
 ```
 
-This function will return a pandas dataframe. Some details about the function parameters: 
+This function will return a pandas dataframe. Some details about the function parameters:
 
-| Option       | Is Required | Default Value | Comments |
-| :------------  | :-----------| :-------------| :------- |
-| `dataset`    | Yes         | -            | Name of the dataset you want to query and retrieve items (rows) from |
-| `max_items`  | No          | 20           | Max number of rows you want to fetch |
-| `offset`     | No          | 0            | If this is set to a positive number, say N, then the first N rows will be skipped and the API will return “max_items” number of rows after skipping the first N rows. |
+| Option      | Is Required | Default Value | Comments                                                                                                                                                              |
+| :---------- | :---------- | :------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dataset`   | Yes         | -             | Name of the dataset you want to query and retrieve items (rows) from                                                                                                  |
+| `max_items` | No          | 20            | Max number of rows you want to fetch                                                                                                                                  |
+| `offset`    | No          | 0             | If this is set to a positive number, say N, then the first N rows will be skipped and the API will return “max_items” number of rows after skipping the first N rows. |
 
 #### Querying items, along with labels from a labeling task
 
@@ -216,7 +213,7 @@ items = refuel_client.get_items(
 
 By default, the API will use Refuel’s sort order (by decreasing order of diversity). You can use the `order_by` param to sort by any other columns in the dataset or by the label or confidence score from a labeling task.
 
-1) Sort by dataset column
+1. Sort by dataset column
 
 ```python
 items = refuel_client.get_items(
@@ -226,7 +223,7 @@ items = refuel_client.get_items(
 )
 ```
 
-2) Sort by label or confidence score from a labeling task. Note that this requires a task name and a subtask name to be specified. `field` can be either 'label' or 'confidence'.
+2. Sort by label or confidence score from a labeling task. Note that this requires a task name and a subtask name to be specified. `field` can be either 'label' or 'confidence'.
 
 ```python
 items = refuel_client.get_items(
@@ -239,21 +236,21 @@ items = refuel_client.get_items(
 
 You may have multiple dicts in the `order_by` list if you would like to sort by multiple columns (used in the case of ties). Some details about the keys for each dict in the `order_by` list:
 
-| Key       | Is Required | Default Value           | Description | Comments |
-| :---------------  | :-----------| :-----------------------|:-----------------------| :------- |
-| `field`   | Yes          |  | The name of the column in the dataset to sort by | In addition to the columns in the dataset, the field can also be 'label' or 'confidence', if the task and subtask names are specified. |
-| `direction`   | No          | `ASC` | The direction that you would like to sort the specified column by | Should be `ASC` or `DESC` |
-| `subtask`   | No          | null | The name of the subtask for which you would like to sort by label or confidence | This should only be provided if the field is 'label' or 'confidence' and requires a task name to be specified in the function params. |
+| Key         | Is Required | Default Value | Description                                                                     | Comments                                                                                                                               |
+| :---------- | :---------- | :------------ | :------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------- |
+| `field`     | Yes         |               | The name of the column in the dataset to sort by                                | In addition to the columns in the dataset, the field can also be 'label' or 'confidence', if the task and subtask names are specified. |
+| `direction` | No          | `ASC`         | The direction that you would like to sort the specified column by               | Should be `ASC` or `DESC`                                                                                                              |
+| `subtask`   | No          | null          | The name of the subtask for which you would like to sort by label or confidence | This should only be provided if the field is 'label' or 'confidence' and requires a task name to be specified in the function params.  |
 
 #### Applying filters when querying items
 
 In addition to sorting options, you can also define filters to only fetch items in the dataset that match a specific criteria. The SDK supports three types of filters:
 
-1) Metadata Filters:
+1. Metadata Filters:
 
 Filter based on the value of a specific column, for e.g. a filter such as “column = value” is defined as a Python dictionary with three keys:
 
-- field:  This is the column on which you want to apply the filter
+- field: This is the column on which you want to apply the filter
 - operator: This is the comparison operator
 - value: This is the value to compare to
 
@@ -269,11 +266,11 @@ items_filter = {
 items = refuel_client.get_dataset_items(
   dataset='<DATASET NAME>',
   max_items=100,
-  filters = [items_filter] 
+  filters = [items_filter]
 )
 ```
 
-2) LLM output value/confidence filter:
+2. LLM output value/confidence filter:
 
 Filter items based on the LLM output value or confidence score from a specific task configured in Refuel.
 
@@ -285,8 +282,8 @@ Here's a concrete example: Let's say you configured a classification task called
 
 Here are a few filters we can define for this task:
 
-* "predicted sentiment is Positive":
-  
+- "predicted sentiment is Positive":
+
 ```python
 {
   'field': 'llm_label',
@@ -296,8 +293,8 @@ Here are a few filters we can define for this task:
 }
 ```
 
-* "predicted sentiment confidence >= 80%":
-  
+- "predicted sentiment confidence >= 80%":
+
 ```python
 {
   'field': 'confidence',
@@ -307,8 +304,8 @@ Here are a few filters we can define for this task:
 }
 ```
 
-* "predicted sentiment does not agree with the ground truth label (available in a column called `ground_truth_sentiment`)":
-  
+- "predicted sentiment does not agree with the ground truth label (available in a column called `ground_truth_sentiment`)":
+
 ```python
 {
   'field': 'llm_label',
@@ -318,8 +315,7 @@ Here are a few filters we can define for this task:
 }
 ```
 
-
-3) Semantic search filter:
+3. Semantic search filter:
 
 Filter based on semantic similarity to a “query item” in a dataset. Semantic search queries are mapped to approximate nearest neighbor searches in an embedding space. These filters are defined as a Python dictionary with two keys:
 
@@ -338,28 +334,27 @@ items = refuel_client.get_dataset_items(
   dataset='<DATASET NAME>',
   task='<TASK NAME>'
   max_items=10,
-  filters = [items_filter] 
+  filters = [items_filter]
 )
 ```
 
-
 Here’s the complete list of filter operators that are currently supported:
 
-| Operator      | Description |
-| :----------   | :-----------|
-| `>`           | Greater than |
-| `>=`          | Greater than or equal to |
-| `=`           | Equals       |
-| `<>`          | Not equal to |
-| `<`           | Less than    |
-| `<=`          | Less than or equal to  |
-| `IS NULL`     | True if field is undefined  |
-| `IS NOT NULL` | True if field is defined  |
-| `LIKE`        | String matching: True if value is in field |
-| `ILIKE`       | String matching (case insensitive): True if value is in field |
-| `NOT LIKE`    | String does not match: True if value is not in field |
+| Operator      | Description                                                             |
+| :------------ | :---------------------------------------------------------------------- |
+| `>`           | Greater than                                                            |
+| `>=`          | Greater than or equal to                                                |
+| `=`           | Equals                                                                  |
+| `<>`          | Not equal to                                                            |
+| `<`           | Less than                                                               |
+| `<=`          | Less than or equal to                                                   |
+| `IS NULL`     | True if field is undefined                                              |
+| `IS NOT NULL` | True if field is defined                                                |
+| `LIKE`        | String matching: True if value is in field                              |
+| `ILIKE`       | String matching (case insensitive): True if value is in field           |
+| `NOT LIKE`    | String does not match: True if value is not in field                    |
 | `NOT ILIKE`   | String does not match (case insensitive): True if value is not in field |
-| `SIMILAR`     | Semantic similarity filter operator |
+| `SIMILAR`     | Semantic similarity filter operator                                     |
 
 ## Labeling Tasks
 
@@ -391,7 +386,7 @@ refuel_client.create_task(
           'labels': [...],
           'input_columns': [...],
           'fallback_value': '...'
-        }, 
+        },
         ...
     ],
     model = 'GPT-4 Turbo'
@@ -400,46 +395,43 @@ refuel_client.create_task(
 
 Some details about the various parameters you see in the function signature above:
 
-| Parameter          | Is Required | Default Value | Comments |
-| :-------------     | :-----------| :-------------| :------- |
-| `task`             | Yes         | None          | Name of the new task you're creating |
-| `dataset`          | Yes         | None          | Dataset (in Refuel) for which you are defining this task |
-| `context`          | Yes         | None          | Context is a high level description of the problem domain and the dataset that the LLM will be working with. It typically starts with something like 'You are and expert at ...' |
-| `fields`           | Yes         | None          | This is a list of dictionaries. Each entry in this list defines an output field generated in the task. See below for details about the schema of each field |
-| `model`            | No          | team default  | LLM that will be used for this task. If not specified, we will use the default LLM set for your team, e.g. GPT-4 Turbo |
-
+| Parameter | Is Required | Default Value | Comments                                                                                                                                                                         |
+| :-------- | :---------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `task`    | Yes         | None          | Name of the new task you're creating                                                                                                                                             |
+| `dataset` | Yes         | None          | Dataset (in Refuel) for which you are defining this task                                                                                                                         |
+| `context` | Yes         | None          | Context is a high level description of the problem domain and the dataset that the LLM will be working with. It typically starts with something like 'You are and expert at ...' |
+| `fields`  | Yes         | None          | This is a list of dictionaries. Each entry in this list defines an output field generated in the task. See below for details about the schema of each field                      |
+| `model`   | No          | team default  | LLM that will be used for this task. If not specified, we will use the default LLM set for your team, e.g. GPT-4 Turbo                                                           |
 
 Next, let's take a look at the schema of each entry in the `fields` list above:
 
-| Parameter          | Is Required | Default Value | Comments |
-| :-------------     | :-----------| :-------------| :------- |
-| `name`             | Yes         | None          | Name of the output field, e.g. `llm_predicted_sentiment` |
-| `type`             | Yes         | None          | Type of output field. This is one of: [`classification`, `multilabel_classification`, `attribute_extraction`, `webpage_transform`, `web_search`] |
-| `guidelines`       | Yes         | None          | Output guidelines for the LLM for this field. Note that if the field type is a `web_search` type, the guidelines will be simply the query template |
-| `labels`           | Yes (for classification field types) | None          | list of valid labels, this field is only required for classification type tasks |
-| `input_columns`    | Yes         | None          | Columns from the dataset to use as input when passing a "row" in the dataset to the LLM.|
-| `ground_truth_column`| No       | None          | A column in the dataset that contains ground truth value for this field, if one exists. Note this is an optional parameter. |
-| `fallback_value`   | No         | None          | A fallback/default value that the LLM should generate for this field if a row cannot be processed successfully |
-
+| Parameter             | Is Required                          | Default Value | Comments                                                                                                                                           |
+| :-------------------- | :----------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                | Yes                                  | None          | Name of the output field, e.g. `llm_predicted_sentiment`                                                                                           |
+| `type`                | Yes                                  | None          | Type of output field. This is one of: [`classification`, `multilabel_classification`, `attribute_extraction`, `webpage_transform`, `web_search`]   |
+| `guidelines`          | Yes                                  | None          | Output guidelines for the LLM for this field. Note that if the field type is a `web_search` type, the guidelines will be simply the query template |
+| `labels`              | Yes (for classification field types) | None          | list of valid labels, this field is only required for classification type tasks                                                                    |
+| `input_columns`       | Yes                                  | None          | Columns from the dataset to use as input when passing a "row" in the dataset to the LLM.                                                           |
+| `ground_truth_column` | No                                   | None          | A column in the dataset that contains ground truth value for this field, if one exists. Note this is an optional parameter.                        |
+| `fallback_value`      | No                                   | None          | A fallback/default value that the LLM should generate for this field if a row cannot be processed successfully                                     |
 
 Finally, here is the list of LLMs currently supported (use the model name as the parameter value):
 
-| Provider      | Name |
-| :----------   | :---|
-| OpenAI        | GPT-4 Turbo |
-| OpenAI        | GPT-4o      |
-| OpenAI        | GPT-4o mini |
-| OpenAI        | GPT-4       |
-| OpenAI        | GPT-3.5 Turbo |
-| Anthropic     | Claude 3.5 (Sonnet) |
-| Anthropic     | Claude 3 (Opus) |
-| Anthropic     | Claude 3 (Haiku) |
-| Google        | Gemini 1.5 (Pro) |
-| Mistral       | Mistral Small |
-| Mistral       | Mistral Large |
-| Refuel        | Refuel LLM-2 |
-| Refuel        | Refuel LLM-2-small |
-
+| Provider  | Name                |
+| :-------- | :------------------ |
+| OpenAI    | GPT-4 Turbo         |
+| OpenAI    | GPT-4o              |
+| OpenAI    | GPT-4o mini         |
+| OpenAI    | GPT-4               |
+| OpenAI    | GPT-3.5 Turbo       |
+| Anthropic | Claude 3.5 (Sonnet) |
+| Anthropic | Claude 3 (Opus)     |
+| Anthropic | Claude 3 (Haiku)    |
+| Google    | Gemini 1.5 (Pro)    |
+| Mistral   | Mistral Small       |
+| Mistral   | Mistral Large       |
+| Refuel    | Refuel LLM-2        |
+| Refuel    | Refuel LLM-2-small  |
 
 ### Get Tasks
 
@@ -585,7 +577,7 @@ response = refuel_client.label(application='my_sentiment_classifier', inputs=inp
   'refuel_output': [
     {'refuel_uuid': '...',
      'refuel_api_timestamp': '...',
-     'refuel_fields': 
+     'refuel_fields':
         {
           'sentiment': {
             'label': ['positive'],
@@ -618,6 +610,37 @@ You can also set the optional `telemetry` parameter to `True` to get additional 
 response = refuel_client.label(application='my_sentiment_classifier', inputs=inputs, telemetry=True)
 ```
 
+### Async Labeling
+
+If you do not want to wait for the labeling to be completed, you can instead use the method `alabel` with the exact same parameters as with `label`. This will submit the inputs for labeling with Refuel and returns the refuel_uuid to get the labeled item back.
+
+```python
+response = refuel_client.alabel(application='my_sentiment_classifier', inputs=inputs)
+```
+
+The output will be:
+
+```
+{
+  'application_id': '...',
+  'application_name': 'my_sentiment_classifier',
+  'refuel_output': [
+    {'refuel_uuid': '...',
+     'refuel_api_timestamp': '...',
+     'uri': '...'
+    }]
+}
+```
+
+You can eith use the `refuel_uuid` from the output to get the labeled item back using `get_labeled_item` method.
+
+```
+response = refuel_client.get_labeled_item(application='my_sentiment_classifier', refuel_uuid='dcbb0266-aeaa-4c0e-87b3-4341b5f3b7bc')
+```
+
+You can also directly call the returned uri to get the labeled item back.
+
+Async Labeling is also useful when the input data is large or the LLM generates large amount of data which can lead to timeouts on Refuel's Application.
 
 ### Share feedback for application outputs
 
