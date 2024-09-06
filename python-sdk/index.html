@@ -1,0 +1,3592 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://refuel.ai/python-sdk/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../integrations/introduction/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.4.2+insiders-4.42.0">
+    
+    
+      
+        <title>Cloud SDK - Refuel Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f2778614.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.46987102.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#refuel-sdk-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Refuel Docs" class="md-header__button md-logo" aria-label="Refuel Docs" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Refuel Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cloud SDK
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/refuel-ai/refuel-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    refuel-ai/refuel-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Cloud SDK
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../integrations/introduction/" class="md-tabs__link">
+          
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../autolabel/introduction/" class="md-tabs__link">
+          
+  
+  Autolabel
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Refuel Docs" class="md-nav__button md-logo" aria-label="Refuel Docs" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    Refuel Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/refuel-ai/refuel-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    refuel-ai/refuel-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud SDK
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializing-a-client-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initializing a client session
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Projects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Projects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datasets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-all-current-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get all current datasets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-items-rows-to-an-uploaded-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding items (rows) to an uploaded dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-items-rows-in-a-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Querying items (rows) in a dataset
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Querying items (rows) in a dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#querying-items-along-with-labels-from-a-labeling-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Querying items, along with labels from a labeling task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-sort-ordering-when-querying-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applying sort ordering when querying items
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-filters-when-querying-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applying filters when querying items
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labeling-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Labeling Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Labeling Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-a-new-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Define a new Task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-a-labeling-task-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start a Labeling Task Run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancel-an-ongoing-labeling-task-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cancel an ongoing labeling task run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-task-run-statusprogress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Task run status/progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-labeling-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy labeling application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-labeling-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get all labeling application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-using-a-deployed-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Label using a deployed application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#async-labeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Async Labeling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#share-feedback-for-application-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Share feedback for application outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finetuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finetuning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Finetuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-finetuning-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting a finetuning run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-finetuned-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get all finetuned models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancel-a-finetuning-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cancel a finetuning run
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/aws/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    
+  
+    Autolabel
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Autolabel
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/overview/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/overview/tutorial-classification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial - Toxic comment classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/llms/llms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    LLMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/llms/embeddings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedding Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/llms/benchmarks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    
+  
+    Labeling Tasks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labeling Tasks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/tasks/classification_task/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Classification Task
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/tasks/multilabel_classification_task/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Multilabel Classification Task
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/tasks/entity_matching_task/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Entity Matching Task
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/tasks/named_entity_recognition_task/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Named Entity Recognition Task
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/tasks/question_answering_task/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Question Answering Task
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/tasks/attribute_extraction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Attribute Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Transformations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/transforms/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/transforms/webpage_transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Webpage Transform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/transforms/pdf_transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    PDF Transform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/transforms/image_transform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Image Transform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    
+  
+    Improving Labeling Accuracy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Improving Labeling Accuracy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/accuracy/prompting-better/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompting Better
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/accuracy/few-shot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Few-shot Prompting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/accuracy/confidence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Confidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/accuracy/chain-of-thought/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Chain of Thought
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    
+  
+    Reliability and Robustness
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reliability and Robustness
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/reliability/llm-output-caching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Output Caching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/reliability/state-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    State Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with Autolabel
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Working with Autolabel
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/resources/configs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Configs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/resources/autolabel_dataset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    AutolabelDataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/resources/CLI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/resources/refuel_datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Refuel-provided Datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/guide/resources/synthetic_dataset_generation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthetic Dataset Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/reference/labeler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    AutoLabeler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/reference/configs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/reference/models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/reference/tasks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/reference/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/reference/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Cache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/reference/example_select/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autolabel/reference/data_models.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializing-a-client-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initializing a client session
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Projects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Projects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datasets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-all-current-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get all current datasets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-items-rows-to-an-uploaded-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding items (rows) to an uploaded dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-items-rows-in-a-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Querying items (rows) in a dataset
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Querying items (rows) in a dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#querying-items-along-with-labels-from-a-labeling-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Querying items, along with labels from a labeling task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-sort-ordering-when-querying-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applying sort ordering when querying items
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-filters-when-querying-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applying filters when querying items
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labeling-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Labeling Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Labeling Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-a-new-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Define a new Task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-a-labeling-task-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start a Labeling Task Run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancel-an-ongoing-labeling-task-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cancel an ongoing labeling task run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-task-run-statusprogress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Task run status/progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-labeling-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy labeling application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-labeling-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get all labeling application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-using-a-deployed-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Label using a deployed application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#async-labeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Async Labeling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#share-feedback-for-application-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Share feedback for application outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finetuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finetuning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Finetuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-finetuning-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting a finetuning run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-finetuned-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get all finetuned models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancel-a-finetuning-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cancel a finetuning run
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="refuel-sdk-guide">Refuel SDK Guide<a class="headerlink" href="#refuel-sdk-guide" title="Permanent link">&para;</a></h1>
+<p><strong>Refuel SDK</strong> is a Python library to programmatically call Refuel's APIs. This guide describes how to install and use the Refuel SDK.</p>
+<p>The SDK is currently an beta release and under rapid development. Please expect some sharp edges. Feedback and bug reports are always welcome! Shoot us an email at <code>support@refuel.ai</code> or ping us on our shared Slack.</p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
+<p>Install the SDK using a package installer such as pip:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>refuel
+</code></pre></div>
+<p>Installing and using the SDK requires Python 3.6+.</p>
+<h3 id="initializing-a-client-session">Initializing a client session<a class="headerlink" href="#initializing-a-client-session" title="Permanent link">&para;</a></h3>
+<p>Set the environment variable REFUEL_API_KEY. The SDK will read it during initialization, and use this value when sending requests:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">refuel</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Assuming you&#39;ve set `REFUEL_API_KEY` in your env,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># init() will pick it up automatically</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">refuel_client</span> <span class="o">=</span> <span class="n">refuel</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</code></pre></div>
+<p>Alternatively, you can supply the API key as a parameter during initializtion as shared below. In the cloud application, there is a top-level dropdown to select the project you’re working on currently. And this selection powers all the pages downstream (datasets, labeling tasks etc). The SDK allows you to do this by setting the project during initialization as well:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">refuel</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;YOUR API KEY&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;PROJECT NAME&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">refuel_client</span> <span class="o">=</span> <span class="n">refuel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</code></pre></div>
+<p>Here’s the complete list of initialization options currently supported:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Is Required</th>
+<th style="text-align: left;">Default Value</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>api_key</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Used to authenticate all requests to the API server</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>project</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">The name of the project you plan to use for the current session</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>timeout</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">60</td>
+<td style="text-align: left;">Timeout in seconds</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>max_retries</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Max number of retries for failed requests</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>max_workers</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Num CPUs (os.cpu_count())</td>
+<td style="text-align: left;">Max number of concurrent requests to the API server</td>
+</tr>
+</tbody>
+</table>
+<h2 id="projects">Projects<a class="headerlink" href="#projects" title="Permanent link">&para;</a></h2>
+<p>These functions let you create a new project in your team’s Refuel account, or get information about projects already defined.</p>
+<h3 id="get-projects">Get Projects<a class="headerlink" href="#get-projects" title="Permanent link">&para;</a></h3>
+<p>The get_projects API will return a list of all projects that belong to your team:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">projects</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_projects</span><span class="p">()</span>
+</code></pre></div>
+<p>You can also retrieve information about a specific project, either by name or by UUID</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">project</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s1">&#39;&lt;PROJECT NAME&gt;&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="create-project">Create Project<a class="headerlink" href="#create-project" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">refuel_client</span><span class="o">.</span><span class="n">create_project</span><span class="p">(</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  <span class="n">project</span><span class="o">=</span><span class="s1">&#39;&lt;NEW PROJECT NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&lt;NEW PROJECT DESCRIPTION&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">)</span>
+</code></pre></div>
+<h2 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">&para;</a></h2>
+<p>These functions let you upload/download a full dataset, or fetch rows and LLM labels within a dataset.</p>
+<h3 id="get-all-current-datasets">Get all current datasets<a class="headerlink" href="#get-all-current-datasets" title="Permanent link">&para;</a></h3>
+<p>The get_datasets function will return a list of all datasets in the project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span> <span class="nn">refuel</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;YOUR API KEY&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;PROJECT NAME&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">}</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">refuel_client</span> <span class="o">=</span> <span class="n">refuel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">datasets</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_datasets</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="upload-dataset">Upload Dataset<a class="headerlink" href="#upload-dataset" title="Permanent link">&para;</a></h3>
+<p>This function lets you upload a local CSV file as a new dataset to Refuel.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span> <span class="nn">refuel</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;YOUR API KEY&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;PROJECT NAME&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">}</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">refuel_client</span> <span class="o">=</span> <span class="n">refuel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="n">dataset</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">upload_dataset</span><span class="p">(</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>  <span class="n">file_path</span><span class="o">=</span><span class="s1">&#39;&lt;PATH TO CSV FILE&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>  <span class="n">dataset_name</span><span class="o">=</span><span class="s1">&#39;&lt;NEW DATASET NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>  <span class="n">source</span><span class="o">=</span><span class="s1">&#39;local|uri&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>  <span class="n">wait_for_completion</span><span class="o">=</span><span class="s1">&#39;True|False&#39;</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="p">)</span>
+</code></pre></div>
+<p>Some details about the function parameters:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Is Required</th>
+<th style="text-align: left;">Default Value</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>file_path</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Path to the data you wish to upload</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dataset_name</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Unique name of the dataset being uploaded</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>source</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">local</td>
+<td style="text-align: left;">Place where the file resides</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>wait_for_completion</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">False</td>
+<td style="text-align: left;">Whether to poll for the completion of the dataset ingestion</td>
+</tr>
+</tbody>
+</table>
+<p>Note: When uploading dataset from <code>uri</code> source, the <code>file_path</code> should be publicly accessible (eg. S3 presigned url) for Refuel to process it.</p>
+<h3 id="download-dataset">Download Dataset<a class="headerlink" href="#download-dataset" title="Permanent link">&para;</a></h3>
+<p>This function create a snapshot of your dataset and generate presigned URL for secure download.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">download_dataset</span><span class="p">(</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  <span class="n">email_address</span><span class="o">=</span><span class="s1">&#39;&lt;YOUR EMAIL ADDRESS&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span>
+</code></pre></div>
+<p>This is an asynchronous workflow, and when the dataset is available for download, Refuel will send an email to the email address. Make sure the email address belongs to a valid user from your team. Depending on the size of the dataset, this export step can take a few minutes. Once the download link is created and emailed, it will be valid for 24 hours.</p>
+<h3 id="adding-items-rows-to-an-uploaded-dataset">Adding items (rows) to an uploaded dataset<a class="headerlink" href="#adding-items-rows-to-an-uploaded-dataset" title="Permanent link">&para;</a></h3>
+<p>This function lets you append new rows to an existing dataset. Keep in mind that the dataset schema is decided during initial upload and is not updated here.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span> <span class="nn">refuel</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;YOUR API KEY&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;PROJECT NAME&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">}</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">refuel_client</span> <span class="o">=</span> <span class="n">refuel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="n">new_items_to_add</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>  <span class="p">{</span><span class="s2">&quot;column1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span> <span class="s2">&quot;column2&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>  <span class="p">{</span><span class="s2">&quot;column1&quot;</span><span class="p">:</span> <span class="s2">&quot;value3&quot;</span><span class="p">,</span> <span class="s2">&quot;column2&quot;</span><span class="p">:</span> <span class="s2">&quot;value4&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>  <span class="o">...</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="p">]</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="n">refuel_client</span><span class="o">.</span><span class="n">add_items</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">new_items_to_add</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="querying-items-rows-in-a-dataset">Querying items (rows) in a dataset<a class="headerlink" href="#querying-items-rows-in-a-dataset" title="Permanent link">&para;</a></h3>
+<p>In addition to downloading the entire dataset, you can also fetch a list of items (rows) from the dataset as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span> <span class="nn">refuel</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;YOUR API KEY&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;PROJECT NAME&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">}</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="n">refuel_client</span> <span class="o">=</span> <span class="n">refuel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="n">items</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_items</span><span class="p">(</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>  <span class="n">max_items</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>  <span class="n">offset</span><span class="o">=</span><span class="mi">0</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="p">)</span>
+</code></pre></div>
+<p>This function will return a pandas dataframe. Some details about the function parameters:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Is Required</th>
+<th style="text-align: left;">Default Value</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>dataset</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Name of the dataset you want to query and retrieve items (rows) from</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>max_items</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">Max number of rows you want to fetch</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>offset</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">If this is set to a positive number, say N, then the first N rows will be skipped and the API will return “max_items” number of rows after skipping the first N rows.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="querying-items-along-with-labels-from-a-labeling-task">Querying items, along with labels from a labeling task<a class="headerlink" href="#querying-items-along-with-labels-from-a-labeling-task" title="Permanent link">&para;</a></h4>
+<p>get_items() also allows you to provide an optional parameter - a labeling task. When provided, the function will also include the task results (LLM labels, confidence and manually confirmed labels, if any) for the returned items.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">items</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_items</span><span class="p">(</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  <span class="n">task</span><span class="o">=</span><span class="s1">&#39;&lt;LABELING TASK NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  <span class="n">max_items</span><span class="o">=</span><span class="mi">100</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="applying-sort-ordering-when-querying-items">Applying sort ordering when querying items<a class="headerlink" href="#applying-sort-ordering-when-querying-items" title="Permanent link">&para;</a></h4>
+<p>By default, the API will use Refuel’s sort order (by decreasing order of diversity). You can use the <code>order_by</code> param to sort by any other columns in the dataset or by the label or confidence score from a labeling task.</p>
+<ol>
+<li>Sort by dataset column</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">items</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_items</span><span class="p">(</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  <span class="n">max_items</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  <span class="n">order_by</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;COLUMN NAME TO SORT BY&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;ASC or DESC&gt;&#39;</span><span class="p">}],</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Sort by label or confidence score from a labeling task. Note that this requires a task name and a subtask name to be specified. <code>field</code> can be either 'label' or 'confidence'.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">items</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_items</span><span class="p">(</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>  <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>  <span class="n">task</span><span class="o">=</span><span class="s1">&#39;&lt;LABELING TASK NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>  <span class="n">max_items</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>  <span class="n">order_by</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;confidence&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;ASC or DESC&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;subtask&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;SUBTASK NAME&gt;&#39;</span><span class="p">}],</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p">)</span>
+</code></pre></div>
+<p>You may have multiple dicts in the <code>order_by</code> list if you would like to sort by multiple columns (used in the case of ties). Some details about the keys for each dict in the <code>order_by</code> list:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Key</th>
+<th style="text-align: left;">Is Required</th>
+<th style="text-align: left;">Default Value</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>field</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">The name of the column in the dataset to sort by</td>
+<td style="text-align: left;">In addition to the columns in the dataset, the field can also be 'label' or 'confidence', if the task and subtask names are specified.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>direction</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;"><code>ASC</code></td>
+<td style="text-align: left;">The direction that you would like to sort the specified column by</td>
+<td style="text-align: left;">Should be <code>ASC</code> or <code>DESC</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>subtask</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">null</td>
+<td style="text-align: left;">The name of the subtask for which you would like to sort by label or confidence</td>
+<td style="text-align: left;">This should only be provided if the field is 'label' or 'confidence' and requires a task name to be specified in the function params.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="applying-filters-when-querying-items">Applying filters when querying items<a class="headerlink" href="#applying-filters-when-querying-items" title="Permanent link">&para;</a></h4>
+<p>In addition to sorting options, you can also define filters to only fetch items in the dataset that match a specific criteria. The SDK supports three types of filters:</p>
+<ol>
+<li>Metadata Filters:</li>
+</ol>
+<p>Filter based on the value of a specific column, for e.g. a filter such as “column = value” is defined as a Python dictionary with three keys:</p>
+<ul>
+<li>field: This is the column on which you want to apply the filter</li>
+<li>operator: This is the comparison operator</li>
+<li>value: This is the value to compare to</li>
+</ul>
+<p>Here’s an example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">items_filter</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;transaction_category&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>  <span class="s1">&#39;operator&#39;</span><span class="p">:</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>  <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Food&#39;</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">}</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">items</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_dataset_items</span><span class="p">(</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>  <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>  <span class="n">max_items</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>  <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="n">items_filter</span><span class="p">]</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>LLM output value/confidence filter:</li>
+</ol>
+<p>Filter items based on the LLM output value or confidence score from a specific task configured in Refuel.</p>
+<p>Here's a concrete example: Let's say you configured a classification task called <code>Sentiment Analysis</code> in your Refuel account, which has two subtasks (output fields):</p>
+<p>(i) <code>predicted_sentiment</code> - the predicted sentiment</p>
+<p>(ii) <code>explanation</code> - a one sentence explanation of why the LLM output the predicted sentiment as Positive or Negative for the item.</p>
+<p>Here are a few filters we can define for this task:</p>
+<ul>
+<li>"predicted sentiment is Positive":</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>  <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;llm_label&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>  <span class="s1">&#39;subtask&#39;</span><span class="p">:</span> <span class="s1">&#39;predicted_sentiment&#39;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>  <span class="s1">&#39;operator&#39;</span><span class="p">:</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>  <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Positive&#39;</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>"predicted sentiment confidence &gt;= 80%":</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;confidence&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  <span class="s1">&#39;subtask&#39;</span><span class="p">:</span> <span class="s1">&#39;predicted_sentiment&#39;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>  <span class="s1">&#39;operator&#39;</span><span class="p">:</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>  <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;0.8&#39;</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>"predicted sentiment does not agree with the ground truth label (available in a column called <code>ground_truth_sentiment</code>)":</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>  <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;llm_label&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>  <span class="s1">&#39;subtask&#39;</span><span class="p">:</span> <span class="s1">&#39;predicted_sentiment&#39;</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>  <span class="s1">&#39;operator&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>  <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;ground_truth_sentiment&#39;</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Semantic search filter:</li>
+</ol>
+<p>Filter based on semantic similarity to a “query item” in a dataset. Semantic search queries are mapped to approximate nearest neighbor searches in an embedding space. These filters are defined as a Python dictionary with two keys:</p>
+<ul>
+<li>operator: always set to "SIMILAR"</li>
+<li>value: This is query item, identified by the uuid in the <code>refuel_uuid</code> column.</li>
+</ul>
+<p>Here’s an example of how to define a semantic search filter. The results are returned in decreasing order of similarity score:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">items_filter</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  <span class="s1">&#39;operator&#39;</span><span class="p">:</span> <span class="s1">&#39;SIMILAR&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;020b434f-e1d7-4b0e-bfc1-beded36c806a&#39;</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">}</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="n">items</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_dataset_items</span><span class="p">(</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>  <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>  <span class="n">task</span><span class="o">=</span><span class="s1">&#39;&lt;TASK NAME&gt;&#39;</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>  <span class="n">max_items</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>  <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="n">items_filter</span><span class="p">]</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="p">)</span>
+</code></pre></div>
+<p>Here’s the complete list of filter operators that are currently supported:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Operator</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>&gt;</code></td>
+<td style="text-align: left;">Greater than</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&gt;=</code></td>
+<td style="text-align: left;">Greater than or equal to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>=</code></td>
+<td style="text-align: left;">Equals</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;&gt;</code></td>
+<td style="text-align: left;">Not equal to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;</code></td>
+<td style="text-align: left;">Less than</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;=</code></td>
+<td style="text-align: left;">Less than or equal to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>IS NULL</code></td>
+<td style="text-align: left;">True if field is undefined</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>IS NOT NULL</code></td>
+<td style="text-align: left;">True if field is defined</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LIKE</code></td>
+<td style="text-align: left;">String matching: True if value is in field</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ILIKE</code></td>
+<td style="text-align: left;">String matching (case insensitive): True if value is in field</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NOT LIKE</code></td>
+<td style="text-align: left;">String does not match: True if value is not in field</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NOT ILIKE</code></td>
+<td style="text-align: left;">String does not match (case insensitive): True if value is not in field</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SIMILAR</code></td>
+<td style="text-align: left;">Semantic similarity filter operator</td>
+</tr>
+</tbody>
+</table>
+<h2 id="labeling-tasks">Labeling Tasks<a class="headerlink" href="#labeling-tasks" title="Permanent link">&para;</a></h2>
+<p>These functions let you retrieve information about labeling tasks defined within a project, and start and cancel a task run.</p>
+<h3 id="define-a-new-task">Define a new Task<a class="headerlink" href="#define-a-new-task" title="Permanent link">&para;</a></h3>
+<p>You can create a new task programmatically within a given project using the <code>create_task</code> function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">import</span> <span class="nn">refuel</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;YOUR API KEY&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;PROJECT NAME&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="p">}</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="n">refuel_client</span> <span class="o">=</span> <span class="n">refuel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="n">refuel_client</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="n">task</span><span class="o">=</span><span class="s1">&#39;&lt;TASK NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>    <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>    <span class="n">context</span> <span class="o">=</span> <span class="s1">&#39;You are an expert at analyzing sentiment of an online review about a business...&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>    <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>        <span class="p">{</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>          <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>          <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>          <span class="s1">&#39;guidelines&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>          <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>          <span class="s1">&#39;input_columns&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>          <span class="s1">&#39;fallback_value&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>        <span class="p">},</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>        <span class="o">...</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>    <span class="p">],</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>    <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;GPT-4 Turbo&#39;</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="p">)</span>
+</code></pre></div>
+<p>Some details about the various parameters you see in the function signature above:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Is Required</th>
+<th style="text-align: left;">Default Value</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>task</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Name of the new task you're creating</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dataset</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Dataset (in Refuel) for which you are defining this task</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>context</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Context is a high level description of the problem domain and the dataset that the LLM will be working with. It typically starts with something like 'You are and expert at ...'</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fields</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">This is a list of dictionaries. Each entry in this list defines an output field generated in the task. See below for details about the schema of each field</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>model</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">team default</td>
+<td style="text-align: left;">LLM that will be used for this task. If not specified, we will use the default LLM set for your team, e.g. GPT-4 Turbo</td>
+</tr>
+</tbody>
+</table>
+<p>Next, let's take a look at the schema of each entry in the <code>fields</code> list above:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Is Required</th>
+<th style="text-align: left;">Default Value</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Name of the output field, e.g. <code>llm_predicted_sentiment</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>type</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Type of output field. This is one of: [<code>classification</code>, <code>multilabel_classification</code>, <code>attribute_extraction</code>, <code>webpage_transform</code>, <code>web_search</code>]</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>guidelines</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Output guidelines for the LLM for this field. Note that if the field type is a <code>web_search</code> type, the guidelines will be simply the query template</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>labels</code></td>
+<td style="text-align: left;">Yes (for classification field types)</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">list of valid labels, this field is only required for classification type tasks</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>input_columns</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Columns from the dataset to use as input when passing a "row" in the dataset to the LLM.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ground_truth_column</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">A column in the dataset that contains ground truth value for this field, if one exists. Note this is an optional parameter.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fallback_value</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">A fallback/default value that the LLM should generate for this field if a row cannot be processed successfully</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, here is the list of LLMs currently supported (use the model name as the parameter value):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Provider</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">GPT-4 Turbo</td>
+</tr>
+<tr>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">GPT-4o</td>
+</tr>
+<tr>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">GPT-4o mini</td>
+</tr>
+<tr>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">GPT-4</td>
+</tr>
+<tr>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">GPT-3.5 Turbo</td>
+</tr>
+<tr>
+<td style="text-align: left;">Anthropic</td>
+<td style="text-align: left;">Claude 3.5 (Sonnet)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Anthropic</td>
+<td style="text-align: left;">Claude 3 (Opus)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Anthropic</td>
+<td style="text-align: left;">Claude 3 (Haiku)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Google</td>
+<td style="text-align: left;">Gemini 1.5 (Pro)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mistral</td>
+<td style="text-align: left;">Mistral Small</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mistral</td>
+<td style="text-align: left;">Mistral Large</td>
+</tr>
+<tr>
+<td style="text-align: left;">Refuel</td>
+<td style="text-align: left;">Refuel LLM-2</td>
+</tr>
+<tr>
+<td style="text-align: left;">Refuel</td>
+<td style="text-align: left;">Refuel LLM-2-small</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-tasks">Get Tasks<a class="headerlink" href="#get-tasks" title="Permanent link">&para;</a></h3>
+<p>You can retrieve a list of all tasks within a given project as follows</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">tasks</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_tasks</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="start-a-labeling-task-run">Start a Labeling Task Run<a class="headerlink" href="#start-a-labeling-task-run" title="Permanent link">&para;</a></h3>
+<p>You can begin running a labeling task on a dataset with the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">start_task_run</span><span class="p">(</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>  <span class="n">task</span><span class="o">=</span><span class="s1">&#39;&lt;TASK NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>  <span class="n">num_items</span><span class="o">=</span><span class="mi">100</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="p">)</span>
+</code></pre></div>
+<p>This will kick off a bulk labeling run for the specified task and dataset, and label 100 items in the dataset. If <code>num_items</code> parameter is not specified, it will label the entire dataset.</p>
+<h3 id="cancel-an-ongoing-labeling-task-run">Cancel an ongoing labeling task run<a class="headerlink" href="#cancel-an-ongoing-labeling-task-run" title="Permanent link">&para;</a></h3>
+<p>You can also cancel an ongoing labelling task with the same function as follows.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">cancel_task_run</span><span class="p">(</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>  <span class="n">task</span><span class="o">=</span><span class="s1">&#39;&lt;TASK NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>  <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">)</span>
+</code></pre></div>
+<h3 id="get-task-run-statusprogress">Get Task run status/progress<a class="headerlink" href="#get-task-run-statusprogress" title="Permanent link">&para;</a></h3>
+<p>To check on the status of an ongoing labeling task run, you can use the following function</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">task_run</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_task_run</span><span class="p">(</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>  <span class="n">task</span><span class="o">=</span><span class="s1">&#39;&lt;TASK NAME&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>  <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;&lt;DATASET NAME&gt;&#39;</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="p">)</span>
+</code></pre></div>
+<p>The <code>task_run</code> object has the following schema:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="p">{</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a> <span class="s1">&#39;task_id&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a> <span class="s1">&#39;task_name&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a> <span class="s1">&#39;dataset_id&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a> <span class="s1">&#39;dataset_name&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a> <span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>   <span class="c1"># This is the LLM used for the run</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a> <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span>    <span class="c1"># Status of the task run</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a> <span class="s1">&#39;metrics&#39;</span><span class="p">:</span> <span class="p">[</span>           <span class="c1"># Metrics related to the task run</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>      <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;num_labeled&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="o">...</span> <span class="p">},</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>      <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;num_remaining&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="o">...</span><span class="p">},</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>      <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;time_elapsed_seconds&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="o">...</span><span class="p">},</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>      <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;time_remaining_seconds&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="o">...</span><span class="p">},</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a> <span class="p">]</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="p">}</span>
+</code></pre></div>
+<p><code>status</code> enum shows the current task run status. It can be one of the following values:</p>
+<ul>
+<li><code>not_started</code>: this is the starting state before the batch run has been kicked off</li>
+<li><code>active</code>: a batch task run is ongoing</li>
+<li><code>paused</code>: the batch run was paused before the full dataset was labeled.</li>
+<li><code>failed</code>: the batch run failed due to a platform error. This should ideally never happen</li>
+<li><code>completed</code>: the batch run was completed successfully</li>
+</ul>
+<p><code>metrics</code> is a list containing all metrics for the current task run. Currently the platform supports the following metrics:</p>
+<ul>
+<li><code>num_labeled</code>: number of rows from the dataset that have been labeled</li>
+<li><code>num_remaining</code> number of rows from the dataset that are remaining</li>
+<li><code>time_elapsed_seconds</code>: time (in seconds) since the task run started. This is only populated when the task run is active (since this metric is not valid when there is no active run).</li>
+<li><code>time_remaining_seconds</code> estimated time (in seconds) remaining for the task run to complete. This is only populated when the task run is active (since this metric is not valid when there is no active run).</li>
+</ul>
+<h2 id="applications">Applications<a class="headerlink" href="#applications" title="Permanent link">&para;</a></h2>
+<p>Refuel allows you to deploy a labeling task as an application. Applications allow you to label data synchronously on demand, primarily for online workloads.</p>
+<h3 id="deploy-labeling-application">Deploy labeling application<a class="headerlink" href="#deploy-labeling-application" title="Permanent link">&para;</a></h3>
+<p>To deploy an existing task as a labeling application, you can use the following function</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">import</span> <span class="nn">refuel</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;YOUR API KEY&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;PROJECT NAME&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="p">}</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="n">refuel_client</span> <span class="o">=</span> <span class="n">refuel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">deploy_task</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;&lt;TASK NAME&gt;&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="get-all-labeling-application">Get all labeling application<a class="headerlink" href="#get-all-labeling-application" title="Permanent link">&para;</a></h3>
+<p>To get all labeling applications that are currently deployed, use the following function</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">applications</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_applications</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="label-using-a-deployed-application">Label using a deployed application<a class="headerlink" href="#label-using-a-deployed-application" title="Permanent link">&para;</a></h3>
+<p>You can use the deployed application for online predictions as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>  <span class="p">{</span><span class="s1">&#39;col_1&#39;</span><span class="p">:</span> <span class="s1">&#39;value_1&#39;</span><span class="p">,</span> <span class="s1">&#39;col_2&#39;</span><span class="p">:</span> <span class="s1">&#39;value_2&#39;</span> <span class="o">...</span><span class="p">},</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>  <span class="p">{</span><span class="s1">&#39;col_1&#39;</span><span class="p">:</span> <span class="s1">&#39;value_1&#39;</span><span class="p">,</span> <span class="s1">&#39;col_2&#39;</span><span class="p">:</span> <span class="s1">&#39;value_2&#39;</span> <span class="o">...</span><span class="p">},</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">]</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">application</span><span class="o">=</span><span class="s1">&#39;&lt;APPLICATION NAME&gt;&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">explain</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>Each element in <code>inputs</code> is a dictionary, with keys as names of the input columns defined in the task. For example, let's consider an application for sentiment classification called <code>my_sentiment_classifier</code>, with two input fields - <code>source</code> and <code>text</code>. You can use it as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>  <span class="p">{</span><span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;yelp.com&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;I really liked the pizza at this restaurant.&#39;</span><span class="p">}</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="p">]</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">application</span><span class="o">=</span><span class="s1">&#39;my_sentiment_classifier&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+</code></pre></div>
+<p><code>response</code> has the following schema:</p>
+<ul>
+<li><code>refuel_output[i]</code> contains the output for <code>inputs[i]</code></li>
+<li><code>refuel_fields</code> is a list whose length is equal to the number of fields defined in the application. For example, let's say <code>my_sentiment_classifier</code> has just one field, <code>sentiment</code>. In this case the output will be:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>{
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>  &#39;application_id&#39;: &#39;...&#39;,
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>  &#39;application_name&#39;: &#39;my_sentiment_classifier&#39;,
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>  &#39;refuel_output&#39;: [
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    {&#39;refuel_uuid&#39;: &#39;...&#39;,
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>     &#39;refuel_api_timestamp&#39;: &#39;...&#39;,
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>     &#39;refuel_fields&#39;:
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>        {
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>          &#39;sentiment&#39;: {
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>            &#39;label&#39;: [&#39;positive&#39;],
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>            &#39;confidence&#39;: 0.9758
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>          }
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>        }
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>    }]
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>}
+</code></pre></div>
+<p>You can also set the optional <code>explain</code> parameter to <code>True</code> to get an explanation for why the provided label was returned. The explanation will be returned in the <code>explanation</code> field in the response, along with the <code>label</code> and <code>confidence</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>&#39;sentiment&#39;: {
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    &#39;label&#39;: [&#39;positive&#39;],
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    &#39;confidence&#39;: 0.9758,
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    &#39;explanation&#39;: &#39;The model predicted a positive sentiment because the text contains positive words like &quot;liked&quot; and &quot;good&quot;.&#39;
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>  }
+</code></pre></div>
+<p>If you would only like to get an explanation for certain fields, you can optionally provide a list of field names in the <code>explain_fields</code> parameter for which you want an explanation returned. If <code>explain_fields</code> is provided, explanations will be returned regardless of whether <code>explain</code> is set to <code>True</code> or <code>False</code>. Here's an example of how to get explanations for the <code>sentiment</code> field in the <code>my_sentiment_classifier</code> application:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">application</span><span class="o">=</span><span class="s1">&#39;my_sentiment_classifier&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">explain</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">explain_fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sentiment&#39;</span><span class="p">])</span>
+</code></pre></div>
+<p>You can also set the optional <code>telemetry</code> parameter to <code>True</code> to get additional info such as the model, provider, and number of tokens used (prompt, output, and total) in the request. The telemetry data will be returned in the <code>usage</code> field in the response.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">application</span><span class="o">=</span><span class="s1">&#39;my_sentiment_classifier&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">telemetry</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="async-labeling">Async Labeling<a class="headerlink" href="#async-labeling" title="Permanent link">&para;</a></h3>
+<p>If you do not want to wait for the labeling to be completed, you can instead use the method <code>alabel</code> with the exact same parameters as with <code>label</code>. This will submit the inputs for labeling with Refuel and returns the refuel_uuid to get the labeled item back.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">alabel</span><span class="p">(</span><span class="n">application</span><span class="o">=</span><span class="s1">&#39;my_sentiment_classifier&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+</code></pre></div>
+<p>The output will be:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>{
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>  &#39;application_id&#39;: &#39;...&#39;,
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>  &#39;application_name&#39;: &#39;my_sentiment_classifier&#39;,
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>  &#39;refuel_output&#39;: [
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    {&#39;refuel_uuid&#39;: &#39;...&#39;,
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>     &#39;refuel_api_timestamp&#39;: &#39;...&#39;,
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>     &#39;uri&#39;: &#39;...&#39;
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>    }]
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>}
+</code></pre></div>
+<p>You can eith use the <code>refuel_uuid</code> from the output to get the labeled item back using <code>get_labeled_item</code> method.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>response = refuel_client.get_labeled_item(application=&#39;my_sentiment_classifier&#39;, refuel_uuid=&#39;dcbb0266-aeaa-4c0e-87b3-4341b5f3b7bc&#39;)
+</code></pre></div>
+<p>You can also directly call the returned uri to get the labeled item back.</p>
+<p>Async Labeling is also useful when the input data is large or the LLM generates large amount of data which can lead to timeouts on Refuel's Application.</p>
+<h3 id="share-feedback-for-application-outputs">Share feedback for application outputs<a class="headerlink" href="#share-feedback-for-application-outputs" title="Permanent link">&para;</a></h3>
+<p>The SDK allows users to log feedback for online predictions. When logging predictions, it is important to identify the input request for which you're logging feedback using <code>refuel_uuid</code> from the response above:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">label</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;sentiment&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;negative&#39;</span><span class="p">]}</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="n">refuel_client</span><span class="o">.</span><span class="n">feedback</span><span class="p">(</span><span class="n">application</span><span class="o">=</span><span class="s1">&#39;my_sentiment_classifier&#39;</span><span class="p">,</span> <span class="n">refuel_uuid</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+</code></pre></div>
+<p>Any row with logged feedback will appear with the verified check mark ("✓") in the cloud application.</p>
+<h2 id="finetuning">Finetuning<a class="headerlink" href="#finetuning" title="Permanent link">&para;</a></h2>
+<p>Refuel allows you to finetune a model based on all the human reviewed data and optionally data labeled by an LLM. Finetuned models allow you to reduce labeling cost and latency while achieving similar, and in some cases better, performance than LLMs like GPT-4.</p>
+<h3 id="starting-a-finetuning-run">Starting a finetuning run<a class="headerlink" href="#starting-a-finetuning-run" title="Permanent link">&para;</a></h3>
+<p>To start a model finetuning run, you can use the following function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="kn">import</span> <span class="nn">refuel</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>    <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;YOUR API KEY&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;PROJECT NAME&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="p">}</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="n">refuel_client</span> <span class="o">=</span> <span class="n">refuel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>
+<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="n">hyperparameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;num_epochs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a><span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;dataset_0_id&quot;</span><span class="p">,</span> <span class="s2">&quot;dataset_1_id&quot;</span><span class="p">]</span>
+<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">finetune_model</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;&lt;TASK ID&gt;&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;&lt;BASE MODEL&gt;&#39;</span><span class="p">,</span> <span class="n">hyperparameters</span><span class="o">=</span><span class="n">hyperparameters</span><span class="p">,</span> <span class="n">datasets</span><span class="o">=</span><span class="n">datasets</span><span class="p">)</span>
+</code></pre></div>
+<p>Supported Base Models: ['refuel-llm-v2-large', 'refuel-llm-v2-small']
+Supported hyperparameters: ['lora_r', 'lora_alpha', 'lora_dropout', 'weight_decay', 'learning_rate', 'cosine_min_lr_ratio']</p>
+<h3 id="get-all-finetuned-models">Get all finetuned models<a class="headerlink" href="#get-all-finetuned-models" title="Permanent link">&para;</a></h3>
+<p>You can retrieve a list of all models within a given project as follows</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">models</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">get_finetuned_models</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;&lt;TASK ID&gt;&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="cancel-a-finetuning-run">Cancel a finetuning run<a class="headerlink" href="#cancel-a-finetuning-run" title="Permanent link">&para;</a></h3>
+<p>You can also cancel an ongoing finetuning run as follows.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">refuel_client</span><span class="o">.</span><span class="n">cancel_finetuning</span><span class="p">(</span><span class="n">model_id</span><span class="o">=</span><span class="s1">&#39;&lt;FINETUNING MODEL ID&gt;&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs Insiders
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f2da59ea.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.65061dd4.min.js"></script>
+      
+    
+  </body>
+</html>
