@@ -121,16 +121,22 @@ refuel_client = refuel.init(**options)
 
 dataset = refuel_client.upload_dataset(
   file_path='<PATH TO CSV FILE>',
-  dataset_name='<NEW DATASET NAME>'
+  dataset_name='<NEW DATASET NAME>',
+  source='local|uri',
+  wait_for_completion='True|False'
 )
 ```
 
 Some details about the function parameters:
 
-| Option         | Is Required | Default Value | Comments                                  |
-| :------------- | :---------- | :------------ | :---------------------------------------- |
-| `file_path`    | Yes         | -             | Path to the data you wish to upload       |
-| `dataset_name` | Yes         | -             | Unique name of the dataset being uploaded |
+| Option                | Is Required | Default Value | Comments                                                    |
+| :-------------------- | :---------- | :------------ | :---------------------------------------------------------- |
+| `file_path`           | Yes         | -             | Path to the data you wish to upload                         |
+| `dataset_name`        | Yes         | -             | Unique name of the dataset being uploaded                   |
+| `source`              | Yes         | local         | Place where the file resides                                |
+| `wait_for_completion` | No          | False         | Whether to poll for the completion of the dataset ingestion |
+
+Note: When uploading dataset from `uri` source, the `file_path` should be publicly accessible (eg. S3 presigned url) for Refuel to process it.
 
 ### Download Dataset
 
